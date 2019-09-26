@@ -1,26 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from "react";
+import * as PostsAPI from './utils/PostsAPI'
+import LoadingBar from 'react-redux-loading-bar'
+import Dashboard from './components/Dashboard'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    categories: [],
+    posts: "posts",
+    comments: "comments",
+    loading: true,
+    catsLoading: true,
+  };
+
+  componentDidMount() {
+
+    PostsAPI.getAllCategories()
+     .then((categories) => {
+         this.setState(() => ({
+           categories
+         }))
+      })
+     .then((res) => {
+         this.setState({ catsLoading: false })
+     })
+
+
+
+   PostsAPI.getAllPosts()
+      .then((posts) => {
+     console.log("App data", posts)
+         this.setState({
+               posts
+           });
+       })
+     .then((res) => {
+         this.setState({ loading: false })
+     })
+
+  }
+
+
+
+  render() {
+    console.log("what is this", this.state)
+  	if ( this.state.loading === true || this.state.catsLoading === true )
+   		return( <LoadingBar/> )
+
+    return (
+      <div className="App">
+
+          Hello
+          <Dashboard />
+
+      </div>
+    )
+  }
 }
 
 export default App;
