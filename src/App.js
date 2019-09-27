@@ -58,7 +58,7 @@ class App extends Component {
         <Fragment>
           <div className="container">
             { this.props.loading === true
-              ? <LoadingBar/>
+              ? <div>I am loading</div>
               : <Fragment>
                   <Dashboard/>
                 </Fragment>
