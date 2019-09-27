@@ -20,12 +20,21 @@ export const getAllCategories = () =>
 
 
 
+function swapPostsKeys(posts) {
+    Object.keys(posts).forEach(function(key, index) {
+    let newKey = posts[key].id
+    posts[newKey] = posts[key]
+    delete posts[key]
+   })
+  return posts
+}
+
 export function getInitialData () {
         return Promise.all([
           getAllPosts(),
           getAllCategories(),
         ]).then(([posts, categories]) => ({
-          posts,
+          posts: swapPostsKeys(posts),
           categories,
         }))
 }
