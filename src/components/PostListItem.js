@@ -8,7 +8,7 @@ class PostListItem extends Component {
     const { post } = this.props
     console.log("the single post: ", post.title)
     return(
-      <div>PostListItem post: {post.title}
+      <div>PostListItem post: By {post.author} {post.title} (category is: {post.category})
       </div>
     )
   }
