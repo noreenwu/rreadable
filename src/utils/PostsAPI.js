@@ -2,7 +2,7 @@ export const api = process.env.REACT_APP_BACKEND || 'http://localhost:3001';
 
 const headers = {
   headers: { Authorization: "whatever-you-want" },
-  // credentials: "include"      
+  // credentials: "include"
 }
 
 export const getAllPosts = () =>
@@ -12,13 +12,23 @@ export const getAllPosts = () =>
 		//.then(res => console.log("getallposts: ", res, typeof(res)))
 
 
-
-
 export const getAllCategories = () =>
 	fetch(`${api}/categories`, headers)
 		.then(res => res.text() )
 		.then(res => JSON.parse(res))
 	  	.then(res => res['categories'])
+
+
+
+export function getInitialData () {
+        return Promise.all([
+          getAllPosts(),
+          getAllCategories(),
+        ]).then(([posts, categories]) => ({
+          posts,
+          categories,
+        }))
+}
 
 
 
