@@ -58,9 +58,11 @@ class App extends Component {
         <Fragment>
           <div className="container">
             { this.props.loading === true
-              ? <div>I am loading</div>
+              ? <div><LoadingBar/></div>
               : <Fragment>
-                  <Dashboard/>
+                <Switch>
+                  <Route path='/' exact component={Dashboard} />
+                </Switch>
                 </Fragment>
             }
           </div>
