@@ -7,7 +7,7 @@ class PostListItem extends Component {
 
   render() {
     const { post } = this.props
-    console.log("the single post: ", post.title)
+
     return(
       <div className="post-frame">
 
@@ -20,7 +20,11 @@ class PostListItem extends Component {
           <div className="post-info">
 
             <div className="post-main">
-                <span className="post-title"><span className="vote-img">score: {post.voteScore}</span> {post.title}</span>
+                <span className="post-title">
+                <span className="vote-img">score: {post.voteScore}</span> {post.title}</span>
+                <div className="post-body">
+                    {post.body}
+                </div>
              </div>
           </div>
 
@@ -30,7 +34,9 @@ class PostListItem extends Component {
 }
 
 
-function mapStateToProps({posts}, {id}) {
+function mapStateToProps({posts}, ownProps) {
+  const { id } = ownProps
+  console.log("postlistitem ownProps", ownProps)
   const post = posts[id]
   return {
      post: post,

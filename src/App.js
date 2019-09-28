@@ -4,6 +4,7 @@ import LoadingBar from 'react-redux-loading-bar'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Dashboard from './components/Dashboard'
+import PostDetail from './components/PostDetail'
 import './App.css';
 import { handleInitialData } from './actions/shared'
 
@@ -62,7 +63,9 @@ class App extends Component {
               : <Fragment>
                 <Switch>
                   <Route path='/' exact component={Dashboard} />
-                  <Route path='/:category' component={Dashboard} />
+                  <Route path='/:category' exact component={Dashboard} />
+                  <Route path='/:category/:post_id' component={PostDetail} />
+
                 </Switch>
                 </Fragment>
             }
