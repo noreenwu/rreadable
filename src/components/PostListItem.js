@@ -9,8 +9,21 @@ class PostListItem extends Component {
     const { post } = this.props
     console.log("the single post: ", post.title)
     return(
-      <div>PostListItem post: By {post.author} {post.title} {formatDate(post.timestamp)}
-                                 vote score: {post.voteScore} (category is: {post.category})
+      <div className="post-frame">
+
+          <div className="post-header">
+
+            <span className="category-name">{post.category} </span>&nbsp; Posted by {post.author} &nbsp;
+               at {formatDate(post.timestamp)}
+          </div>
+
+          <div className="post-info">
+
+            <div className="post-main">
+                <span className="post-title"><span className="vote-img">score: {post.voteScore}</span> {post.title}</span>
+             </div>
+          </div>
+
       </div>
     )
   }
