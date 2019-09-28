@@ -62,6 +62,7 @@ class App extends Component {
               : <Fragment>
                 <Switch>
                   <Route path='/' exact component={Dashboard} />
+                  <Route path='/:category' component={Dashboard} />
                 </Switch>
                 </Fragment>
             }

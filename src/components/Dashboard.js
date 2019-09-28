@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { Link  } from 'react-router-dom'
 import PostListItem from './PostListItem'
 
 const TIMESTAMP = 'timestamp'
@@ -8,7 +9,6 @@ const VOTESCORE = 'votescore'
 class Dashboard extends Component {
 
    state = {
-      currentCat: 'all',
       sortOrder: TIMESTAMP
   }
 
@@ -38,17 +38,15 @@ class Dashboard extends Component {
 
   render() {
 
-    let { posts, categories } = this.props
+    let { posts, categories, category } = this.props
     let workingPosts = posts
 
-    console.log("state on render ", this.state)
-
-    if (this.state.currentCat === 'all') {
+    if (category === 'all') {
        workingPosts = posts
     }
     else {
        // filter posts
-       workingPosts = posts.filter(p => p.category === this.state.currentCat)
+       workingPosts = posts.filter(p => p.category === category)
     }
 
     let sortedPosts
@@ -87,21 +85,18 @@ class Dashboard extends Component {
 
        <div className="categoryList">
 
+        <Link to={'/'}>
         <button
           className='btn'
-          value='all'
-          type='button'
-          onClick={ (event) => this.handleChange(event.target.value)}
-          key={'name'}
         >all
         </button>
+        </Link>
        { categories.map(c =>
-         <button
-            className="btn"
-            value={c.name}
-            onClick={ (event) => this.handleChange(event.target.value)}
-            key={c.name}>{c.name}
-          </button>
+         <Fragment key={c.name}>
+            <Link to={`/${c.path}`}>
+                <button className='btn'>{c.name}</button>
+            </Link>
+          </Fragment>
         )}
 
        </div>
@@ -117,8 +112,15 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps( {posts, categories}) {
+function mapStateToProps( {posts, categories}, ownProps) {
+  let {category} = ownProps.match.params
+
+  if ( category === undefined ) {
+    category = 'all'
+  }
+
   return{
+    category,
     defaultPosts: Object.values(posts),
     posts: Object.values(posts),
     categories: Object.values(categories)
