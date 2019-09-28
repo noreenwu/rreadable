@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link  } from 'react-router-dom'
 import { formatDate } from '../utils/helpers'
 
 
@@ -20,11 +21,11 @@ class PostListItem extends Component {
           <div className="post-info">
 
             <div className="post-main">
-                <span className="post-title">
-                <span className="vote-img">score: {post.voteScore}</span> {post.title}</span>
-                <div className="post-body">
-                    {post.body}
-                </div>
+                <Link to={`/${post.category}/${post.id}`}>
+                  <div className="post-title">
+                    <span className="vote-img">score: {post.voteScore}</span> {post.title}
+                  </div>
+                </Link>
              </div>
           </div>
 
