@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { formatDate } from '../utils/helpers'
 
 
 class PostListItem extends Component {
@@ -8,7 +9,8 @@ class PostListItem extends Component {
     const { post } = this.props
     console.log("the single post: ", post.title)
     return(
-      <div>PostListItem post: By {post.author} {post.title} (category is: {post.category})
+      <div>PostListItem post: By {post.author} {post.title} {formatDate(post.timestamp)}
+                                 vote score: {post.voteScore} (category is: {post.category})
       </div>
     )
   }
