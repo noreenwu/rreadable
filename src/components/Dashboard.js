@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Link  } from 'react-router-dom'
 import PostListItem from './PostListItem'
+import { savePost } from '../utils/PostsAPI'
 
 const TIMESTAMP = 'timestamp'
 const VOTESCORE = 'votescore'
@@ -36,6 +37,11 @@ class Dashboard extends Component {
       })
   }
 
+  handleClick() {
+    console.log("hello handleclick")
+    savePost()
+  }
+
   render() {
 
     let { posts, categories, category } = this.props
@@ -62,52 +68,57 @@ class Dashboard extends Component {
     return(
        <div>Dashboard
 
-       <div className="sortOrder">
-        <button
-            className='btn'
-            value='TIMESTAMP'
-            type='button'
-            onClick={ (event) => this.handleSortOrderChange(event.target.value)}
-            key='time'
-            >Timestamp
-        </button>
+           <div className="sortOrder">
+            <button
+                className='btn'
+                value='TIMESTAMP'
+                type='button'
+                onClick={ (event) => this.handleSortOrderChange(event.target.value)}
+                key='time'
+                >Timestamp
+            </button>
 
-        <button
-            className='btn'
-            value='VOTESCORE'
-            type='button'
-            onClick={ (event) => this.handleSortOrderChange(event.target.value)}
-            key='vote'
-            >Score
-        </button>
+            <button
+                className='btn'
+                value='VOTESCORE'
+                type='button'
+                onClick={ (event) => this.handleSortOrderChange(event.target.value)}
+                key='vote'
+                >Score
+            </button>
 
-       </div>
+           </div>
 
-       <div className="categoryList">
+           <div className="categoryList">
 
-        <Link to={'/'}>
-        <button
-          className='btn'
-        >all
-        </button>
-        </Link>
-       { categories.map(c =>
-         <Fragment key={c.name}>
-            <Link to={`/${c.path}`}>
-                <button className='btn'>{c.name}</button>
+            <Link to={'/'}>
+            <button
+              className='btn'
+            >all
+            </button>
             </Link>
-          </Fragment>
-        )}
+           { categories.map(c =>
+             <Fragment key={c.name}>
+                <Link to={`/${c.path}`}>
+                    <button className='btn'>{c.name}</button>
+                </Link>
+              </Fragment>
+            )}
+
+           </div>
+
+           { sortedPosts.length === 0
+             ? <div> No posts in this category </div>
+             : sortedPosts.map((p) =>
+              <PostListItem key={p.id} id={p.id}/>
+           )}
+
+           <div onClick={() => this.handleClick()}>Create new post test</div>
 
        </div>
 
 
-       { sortedPosts.length === 0
-         ? <div> No posts in this category </div>
-         : sortedPosts.map((p) =>
-          <PostListItem key={p.id} id={p.id}/>
-       )}
-       </div>
+
     )
   }
 }
