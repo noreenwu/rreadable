@@ -1,7 +1,6 @@
-import { RECEIVE_POSTS } from '../actions/posts'
+import { RECEIVE_POSTS, ADD_POST } from '../actions/posts'
 
 export default function posts (state = {}, action) {
-
 
   switch(action.type) {
     case RECEIVE_POSTS :
@@ -10,7 +9,14 @@ export default function posts (state = {}, action) {
         ...action.posts
       }
 
-      default :
-        return state
+    case ADD_POST: {
+      console.log("reducers ADD_POST post was ", action.post)
+      return {
+        ...state,
+        ...action.post
+      }
+    }
+    default :
+      return state
    }
 }

@@ -9,6 +9,10 @@ class PostListItem extends Component {
   render() {
     const { post } = this.props
 
+    if (post === null) {
+       console.log("PostListItem got invalid id")
+       return null
+    }
     return(
       <div className="post-frame">
 
@@ -37,6 +41,11 @@ class PostListItem extends Component {
 
 function mapStateToProps({posts}, ownProps) {
   const { id } = ownProps
+  if (id === undefined) {
+    return {
+      post: null
+    }
+  }
   console.log("postlistitem ownProps", ownProps)
   const post = posts[id]
   return {

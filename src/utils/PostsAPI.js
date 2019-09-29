@@ -40,27 +40,41 @@ export function getInitialData () {
 }
 
 export function savePost(post) {
+    console.log("PostAPI: savePost")
+    //const newId = Math.random().toString(36).substr(-10)
+    let timestamp = Date.now()
+
+    return Promise.all([
     fetch(`${api}/posts`, {
       method: 'POST',
       headers: { Authorization: "whatever-you-want" },
       body: JSON.stringify({
-        id: '123',
-        timestamp: Date.now(),
-        title: 'aloha',
-        body: 'Hawaii',
-        author: 'Scamp',
-        category: 'udacity'
-      })
-    })
-    .then(function (data) {
-      console.log('Request success: ', data);
-    })
-    .catch(function (error) {
-      console.log('Request failure: ', error);
-    });
-
+          id: '6ni6ok3ym7mf1p33lney',
+          timestamp: timestamp,
+          title: 'aloha',
+          body: 'Hawaii',
+          author: 'Scamp',
+          category: 'redux',
+          voteScore: 0
+        })
+    })])
 }
 
+export function deletePost(id) {
+  id = '6ni6ok3ym7mf1p33lnez'  // for now
+  //id = '111'
+  fetch(`${api}/posts/${id}`, {
+    method: 'DELETE',
+    headers: { Authorization: "whatever-you-want" },
+
+  })
+  .then(function (data) {
+    console.log('Request success: ', data);
+  })
+  .catch(function (error) {
+    console.log('Request failure: ', error);
+  });
+}
 
       /*  ** outside the workspace, do not include credentials
 

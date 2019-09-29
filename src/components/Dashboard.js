@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Link  } from 'react-router-dom'
 import PostListItem from './PostListItem'
-import { savePost } from '../utils/PostsAPI'
+//import { savePost, deletePost } from '../utils/PostsAPI'
+import { handleNewPost } from '../actions/shared'
 
 const TIMESTAMP = 'timestamp'
 const VOTESCORE = 'votescore'
@@ -37,9 +38,24 @@ class Dashboard extends Component {
       })
   }
 
-  handleClick() {
-    console.log("hello handleclick")
-    savePost()
+  handleNew() {
+    const { dispatch } = this.props
+    const dummyPost = { '111' : { id: '111',
+                                  timestamp: Date.now(),
+                                  title: 'Aloha',
+                                  body: 'are you kidding',
+                                  author: 'Mr. Smith',
+                                  category: 'redux'
+                                }
+                      }
+
+    console.log("hello handleNew")
+    dispatch(handleNewPost(dummyPost))
+  }
+
+  handleDelete() {
+    console.log("hello handleDelete")
+    // deletePost()
   }
 
   render() {
@@ -113,7 +129,9 @@ class Dashboard extends Component {
               <PostListItem key={p.id} id={p.id}/>
            )}
 
-           <div onClick={() => this.handleClick()}>Create new post test</div>
+           <div onClick={() => this.handleNew()}>Create new post test</div>
+
+           <div onClick={() => this.handleDelete()}>Delete post test</div>
 
        </div>
 
