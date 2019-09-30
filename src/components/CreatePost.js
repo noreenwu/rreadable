@@ -33,7 +33,7 @@ class CreatePost extends Component {
 
     let newId = getNewId()
 
-    const dummyPost = { [newId] : { id: newId,
+    const newPost = { [newId] : { id: newId,
                                   timestamp: Date.now(),
                                   title: this.state.title,
                                   body: this.state.body,
@@ -44,7 +44,8 @@ class CreatePost extends Component {
                                 }
                       }
 
-   dispatch(handleNewPost(dummyPost))
+   dispatch(handleNewPost(newPost, newId))
+
 
    this.setState(() => ({
          title: '',

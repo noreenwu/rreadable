@@ -88,7 +88,7 @@ class Dashboard extends Component {
                 value='TIMESTAMP'
                 type='button'
                 onClick={ (event) => this.handleSortOrderChange(event.target.value)}
-                key='time'
+
                 >Timestamp
             </button>
 
@@ -97,7 +97,7 @@ class Dashboard extends Component {
                 value='VOTESCORE'
                 type='button'
                 onClick={ (event) => this.handleSortOrderChange(event.target.value)}
-                key='vote'
+
                 >Score
             </button>
 

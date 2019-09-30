@@ -47,22 +47,25 @@ export function getInitialData () {
 }
 
 export function savePost(post) {
-    console.log("PostAPI: savePost")
-    let timestamp = Date.now()
+    console.log("PostAPI: savePost id ", post.id)
+    console.log("PostAPI and the full post is ", post)
 
     return Promise.all([
+
     fetch(`${api}/posts`, {
       method: 'POST',
-      headers: { Authorization: "whatever-you-want" },
-      body: JSON.stringify({
-          id: '6ni6ok3ym7mf1p33lney',
-          timestamp: timestamp,
-          title: 'aloha',
-          body: 'Hawaii',
-          author: 'Scamp',
-          category: 'redux'
+      headers: { Authorization: "whatever-you-want",
+                'Content-Type': 'application/json' },
+      body: JSON.stringify({            // or post[post.id]
+          id: post.id,
+          timestamp: post.timestamp,
+          title: post.title,
+          body: post.body,
+          author: post.author,
+          category: post.category
         })
-    })])
+    })
+  ])
 }
 
 export function deletePost(id) {

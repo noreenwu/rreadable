@@ -15,13 +15,17 @@ export function handleInitialData () {
       })
   }
 }
-export function handleNewPost (post) {
-  console.log("shared: handleNewPost post was ", post)
+export function handleNewPost (post, id) {
+  console.log("shared: handleNewPost post was ", post[id])
   // return(dispatch) => {
   //    //return savePost(post)
   //    return(console.log("some API call"))
   //       .then ((post) => dispatch( addPost(post)))
   // }
+
+
+  savePost(post[id])  // not complaining on save but reloading reveals that something saved but not the info intended (mostly undefined)
+
   return (dispatch) => {
       dispatch(addPost(post))
   }
