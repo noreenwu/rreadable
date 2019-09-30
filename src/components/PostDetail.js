@@ -10,7 +10,26 @@ class PostDetail extends Component {
 
   state = {
      comments: [],
-     commentsLoaded: false
+     // commentsLoaded: false
+  }
+
+  componentDidMount() {
+    let { id } = this.props
+
+    if ( id === -1 ) {
+      console.log("params", this.props.match.params.post_id)
+      id = this.props.match.params.post_id
+    }
+
+    console.log("id in componentDidMount", id)
+    getComments (id)
+      .then((comments) => {
+        this.setState(() => ({
+          comments,
+          commentsLoaded: true
+        }))
+      })
+
   }
 
   render() {
@@ -22,15 +41,15 @@ class PostDetail extends Component {
       )
     }
     else {
-      if (this.state.commentsLoaded === false ) {
-        getComments (id)
-          .then((comments) => {
-            this.setState(() => ({
-              comments,
-              commentsLoaded: true
-            }))
-          })
-      }
+      // if (this.state.commentsLoaded === false ) {
+      //   getComments (id)
+      //     .then((comments) => {
+      //       this.setState(() => ({
+      //         comments,
+      //         commentsLoaded: true
+      //       }))
+      //     })
+      // }
 
       return(
         <Fragment>
