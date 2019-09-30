@@ -63,3 +63,32 @@
     padding-left: 10px;
 
 }
+
+input[type=text], textarea {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 30px;
+  width: 80%;
+}
+
+textarea {
+  height: 150px;
+}
+
+.btn {
+  margin: 5px;
+  padding: 5px;
+  font-size: 1.3em;
+  cursor: pointer;
+  border: 1px solid #5da6e6;
+  background-color: aliceblue;
+}
+
+.input-half {
+  width: 42%;
+  margin-bottom: 0;
+}

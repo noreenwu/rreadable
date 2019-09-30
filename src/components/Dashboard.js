@@ -3,15 +3,19 @@ import { connect } from 'react-redux'
 import { Link  } from 'react-router-dom'
 import PostListItem from './PostListItem'
 //import { savePost, deletePost } from '../utils/PostsAPI'
-import { handleNewPost } from '../actions/shared'
+import CreatePost from './CreatePost'
 
 const TIMESTAMP = 'timestamp'
 const VOTESCORE = 'votescore'
+const READ = 'read'
+const CREATE = 'create'
+
 
 class Dashboard extends Component {
 
    state = {
-      sortOrder: TIMESTAMP
+      sortOrder: TIMESTAMP,
+      mode: READ
   }
 
   handleChange(val) {
@@ -38,25 +42,19 @@ class Dashboard extends Component {
       })
   }
 
-  handleNew() {
-    const { dispatch } = this.props
-    const dummyPost = { '111' : { id: '111',
-                                  timestamp: Date.now(),
-                                  title: 'Aloha',
-                                  body: 'are you kidding',
-                                  author: 'Mr. Smith',
-                                  category: 'redux'
-                                }
-                      }
 
-    console.log("hello handleNew")
-    dispatch(handleNewPost(dummyPost))
+
+  showNewPostForm() {
+    this.setState({
+       mode: CREATE
+    })
   }
 
   handleDelete() {
     console.log("hello handleDelete")
     // deletePost()
   }
+
 
   render() {
 
@@ -129,9 +127,14 @@ class Dashboard extends Component {
               <PostListItem key={p.id} id={p.id}/>
            )}
 
-           <div onClick={() => this.handleNew()}>Create new post test</div>
+           <div onClick={() => this.showNewPostForm()}>Create new post test</div>
 
            <div onClick={() => this.handleDelete()}>Delete post test</div>
+
+           { this.state.mode === CREATE
+             ? <CreatePost />
+             : null
+           }
 
        </div>
 
