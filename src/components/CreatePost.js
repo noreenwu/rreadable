@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleNewPost } from '../actions/shared'
+import { getNewId } from '../utils/helpers'
 
 class CreatePost extends Component {
   constructor(props) {
@@ -27,19 +28,34 @@ class CreatePost extends Component {
   handleSubmit(event) {
     event.preventDefault()
     const { dispatch } = this.props
-    //console.log("handleSubmit", this.props)
-    const dummyPost = { '111' : { id: '111',
+
+    let newId = getNewId()
+
+    const dummyPost = { [newId] : { id: newId,
                                   timestamp: Date.now(),
                                   title: this.state.title,
                                   body: this.state.body,
                                   author: this.state.author,
-                                  voteScore: 0,
+                                  voteScore: 1,
                                   category: 'redux'
                                 }
                       }
 
    dispatch(handleNewPost(dummyPost))
-    //handleNewPost(dummyPost)
+
+   this.setState(() => ({
+         title: '',
+         body: '',
+         author: ''
+    }))
+   // clear the form fields
+    // this.setState = ({
+    //   title: '',
+    //   body: '',
+    //   author: ''
+    // })
+
+
   }
 
   render() {

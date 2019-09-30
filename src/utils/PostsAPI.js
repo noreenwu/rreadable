@@ -41,7 +41,6 @@ export function getInitialData () {
 
 export function savePost(post) {
     console.log("PostAPI: savePost")
-    //const newId = Math.random().toString(36).substr(-10)
     let timestamp = Date.now()
 
     return Promise.all([
@@ -54,8 +53,7 @@ export function savePost(post) {
           title: 'aloha',
           body: 'Hawaii',
           author: 'Scamp',
-          category: 'redux',
-          voteScore: 0
+          category: 'redux'
         })
     })])
 }
