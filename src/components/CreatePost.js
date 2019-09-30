@@ -10,12 +10,14 @@ class CreatePost extends Component {
     this.state = {
       title: '',
       body: '',
-      author: ''
+      author: '',
+      category: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
+
 
   handleChange(e) {
     console.log("handleChange", e.target.name, e.target.value)
@@ -37,7 +39,7 @@ class CreatePost extends Component {
                                   body: this.state.body,
                                   author: this.state.author,
                                   voteScore: 1,
-                                  category: 'redux'
+                                  category: this.state.category
                                 }
                       }
 
@@ -59,7 +61,8 @@ class CreatePost extends Component {
   }
 
   render() {
-
+    const { categories } = this.props
+    console.log("CreatePost categories ", categories)
     return(
        <div className="container">
           <form onSubmit={this.handleSubmit}>
@@ -70,8 +73,16 @@ class CreatePost extends Component {
               placeholder='enter your name here'
               value={this.state.author}
               onChange={this.handleChange}
-            />
+            /><br/>
 
+            <select value={this.state.category}
+                    name='category'
+                    onChange={(event) => this.handleChange(event)}>
+                    { categories.map( v =>
+                        <option key={v.name} value={v.name}>{v.name}</option>
+                    )}
+
+            </select><br/>
 
             <input
               type='text'
@@ -90,7 +101,7 @@ class CreatePost extends Component {
             <button
               className='btn'
               type='submit'
-              disabled={this.state.title === '' || this.state.body === '' || this.state.author === ''}>
+              disabled={this.state.title === '' || this.state.body === '' || this.state.author === '' || this.state.category === '' }>
                 Submit
             </button>
 
@@ -102,10 +113,10 @@ class CreatePost extends Component {
 }
 
 
-function mapStateToProps( {posts}) {
+function mapStateToProps( {categories}) {
 
   return{
-      hello: 1
+      categories: Object.values(categories)
   }
 
 }
