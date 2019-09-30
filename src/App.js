@@ -11,13 +11,6 @@ import { handleInitialData } from './actions/shared'
 
 class App extends Component {
 
-  // state = {
-  //   categories: [],
-  //   posts: "posts",
-  //   comments: "comments",
-  //   loading: true,
-  //   catsLoading: true,
-  // };
 
   componentDidMount() {
     this.props.dispatch(handleInitialData())

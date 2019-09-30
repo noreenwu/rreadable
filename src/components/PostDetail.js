@@ -1,37 +1,59 @@
-import React, { Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Link  } from 'react-router-dom'
 import PostHeader from './PostHeader'
 import PostTitle from './PostTitle'
 import PostBody from './PostBody'
+import { getComments } from '../utils/PostsAPI'
 
-function PostDetail ( props ) {
-  const {id, post} = props
+class PostDetail extends Component {
 
-  if (id < 0) {
-    return (
-      <div>PostDetail: No posts with specified id</div>
-    )
+  state = {
+     comments: [],
+     commentsLoaded: false
   }
-  else {
-    return(
-      <Fragment>
-        <h3>{post.title}</h3>
-        <div className="post-frame">
-          <PostHeader id={post.id}/>
-          <PostTitle id={post.id}/>
-          <PostBody id={post.id}/>
 
-          <Link to={`/${post.category}`}>
-             <div>Go to category listing</div>
-          </Link>
+  render() {
+    const {id, post} = this.props
 
-          <Link to={'/'}>
-             <div>Go to full listing</div>
-          </Link>
-        </div>
-      </Fragment>
-    )
+    if (id < 0) {
+      return (
+        <div>PostDetail: No posts with specified id</div>
+      )
+    }
+    else {
+      if (this.state.commentsLoaded === false ) {
+        getComments (id)
+          .then((comments) => {
+            this.setState(() => ({
+              comments,
+              commentsLoaded: true
+            }))
+          })
+      }
+
+      return(
+        <Fragment>
+          <h3>{post.title}</h3>
+          <div className="post-frame">
+            <PostHeader id={post.id}/>
+            <PostTitle id={post.id}/>
+            <PostBody id={post.id}/>
+
+            { this.state.comments.map(com =>
+                <li key={com.id}>{com.body}</li> )}
+
+            <Link to={`/${post.category}`}>
+               <div>Go to category listing</div>
+            </Link>
+
+            <Link to={'/'}>
+               <div>Go to full listing</div>
+            </Link>
+          </div>
+        </Fragment>
+      )
+    }
   }
 }
 

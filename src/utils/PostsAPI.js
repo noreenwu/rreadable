@@ -20,6 +20,13 @@ export const getAllCategories = () =>
 
 
 
+export const getComments = (postid) =>
+  fetch(`${api}/posts/${postid}/comments`, headers)
+    .then(res => res.text() )
+    .then(res => JSON.parse(res))
+      .then(res => Object.values(res))
+
+
 function swapPostsKeys(posts) {
     Object.keys(posts).forEach(function(key, index) {
     let newKey = posts[key].id
