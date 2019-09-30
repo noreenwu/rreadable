@@ -78,6 +78,7 @@ class CreatePost extends Component {
             <select value={this.state.category}
                     name='category'
                     onChange={(event) => this.handleChange(event)}>
+                       <option key={'default'} value=''>Select category</option>
                     { categories.map( v =>
                         <option key={v.name} value={v.name}>{v.name}</option>
                     )}
