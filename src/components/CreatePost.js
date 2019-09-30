@@ -39,6 +39,7 @@ class CreatePost extends Component {
                                   body: this.state.body,
                                   author: this.state.author,
                                   voteScore: 1,
+                                  commentCount: 0,
                                   category: this.state.category
                                 }
                       }

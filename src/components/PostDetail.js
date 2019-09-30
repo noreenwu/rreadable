@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Link  } from 'react-router-dom'
-import { formatDate } from '../utils/helpers'
-
+import PostHeader from './PostHeader'
+import PostTitle from './PostTitle'
+import PostBody from './PostBody'
 
 function PostDetail ( props ) {
-  const {id, category, post} = props
+  const {id, post} = props
 
-  console.log("PostDetail ", id, category)
   if (id < 0) {
     return (
       <div>PostDetail: No posts with specified id</div>
@@ -15,29 +15,29 @@ function PostDetail ( props ) {
   }
   else {
     return(
-      <div>PostDetail id was {id}
-        <div>{post.title}</div>
-        <div>{post.body}</div>
-        <Link to={`/${post.category}`}>
+      <Fragment>
+        <h3>{post.title}</h3>
+        <div className="post-frame">
+          <PostHeader id={post.id}/>
+          <PostTitle id={post.id}/>
+          <PostBody id={post.id}/>
 
-           <div>Go to category listing</div>
-        </Link>
+          <Link to={`/${post.category}`}>
+             <div>Go to category listing</div>
+          </Link>
 
-        <Link to={'/'}>
-           <div>Go to full listing</div>
-        </Link>
-      </div>
-
+          <Link to={'/'}>
+             <div>Go to full listing</div>
+          </Link>
+        </div>
+      </Fragment>
     )
   }
 }
 
 function mapStateToProps({posts}, ownProps) {
-  const { post_id, category } = ownProps.match.params
+  const { post_id } = ownProps.match.params
   const id = post_id
-  console.log("PostDetail the id was ", post_id)
-  console.log("PostDetail the category was ", category)
-  console.log("PostDetail ownProps were ", ownProps)
   const thePost = posts[id]
 
   if (thePost === undefined) {
@@ -48,7 +48,6 @@ function mapStateToProps({posts}, ownProps) {
   return {
     id,
     post: thePost,
-    category
   }
 }
 

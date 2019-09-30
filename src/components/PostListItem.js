@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link  } from 'react-router-dom'
-import { formatDate } from '../utils/helpers'
-
+import PostHeader from './PostHeader'
+import PostTitle from './PostTitle'
 
 class PostListItem extends Component {
 
@@ -13,24 +12,17 @@ class PostListItem extends Component {
        console.log("PostListItem got invalid id")
        return null
     }
+    console.log("PostListItem post ", post)
     return(
       <div className="post-frame">
 
-          <div className="post-header">
-
-            <span className="category-name">{post.category} </span>&nbsp; Posted by {post.author} &nbsp;
-               at {formatDate(post.timestamp)}
-          </div>
+          <PostHeader id={post.id}/>
 
           <div className="post-info">
 
-            <div className="post-main">
-                <Link to={`/${post.category}/${post.id}`}>
-                  <div className="post-title">
-                    <span className="vote-img">score: {post.voteScore}</span> {post.title}
-                  </div>
-                </Link>
-             </div>
+
+                <PostTitle id={post.id}/>
+
           </div>
 
       </div>
