@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link  } from 'react-router-dom'
-import { countVote } from '../actions/posts'
+import { countVote, deletePost } from '../actions/posts'
 import { saveVote } from '../utils/PostsAPI'
 
 class PostTitle extends Component {
@@ -17,6 +17,12 @@ class PostTitle extends Component {
 
   }
 
+  deletePost(postid) {
+    const { dispatch } = this.props
+
+    console.log("delete post")
+    dispatch(deletePost(postid))
+  }
 
 
   render() {
@@ -39,7 +45,7 @@ class PostTitle extends Component {
 
         <div className="post-edit-controls">
            <button className='btn'>EDIT</button>
-           <button className='btn'>DELETE</button>
+           <button className='btn' onClick={() => this.deletePost(post.id)}>DELETE</button>
         </div>
 
       </div>

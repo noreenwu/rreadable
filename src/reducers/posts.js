@@ -1,4 +1,4 @@
-import { RECEIVE_POSTS, ADD_POST, COUNT_VOTE } from '../actions/posts'
+import { RECEIVE_POSTS, ADD_POST, COUNT_VOTE, DELETE_POST } from '../actions/posts'
 
 export default function posts (state = {}, action) {
 
@@ -26,6 +26,15 @@ export default function posts (state = {}, action) {
         }
       }
     }
+    case DELETE_POST: {
+        let newState = Object.assign({}, state)
+        delete newState[action.postid]
+        console.log("DELETE_POST newState ", newState)
+        return {
+          ...newState
+        }
+    }
+
     default :
       return state
    }

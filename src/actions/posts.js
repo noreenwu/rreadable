@@ -1,6 +1,8 @@
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const ADD_POST = 'ADD_POST'
 export const COUNT_VOTE = 'COUNT_VOTE'
+export const DELETE_POST = 'DELETE_POST'
+
 
 export function receivePosts (posts) {
   return {
@@ -26,4 +28,13 @@ export function countVote (post, postid, vote) {
       vote
     }
 
+}
+
+export function deletePost (postid) {
+   console.log("actions/deletePost postid", postid)
+
+   return {
+     type: DELETE_POST,
+     postid
+   }
 }
