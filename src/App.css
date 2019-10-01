@@ -23,7 +23,7 @@
 
 .post-frame {
   width: 100%;
-  max-width: 600px;
+  max-width: 900px;
   padding: 10px;
   margin: 20px auto;
   border: 1px solid #dad7d7;
@@ -46,9 +46,10 @@
 .post-main {
   margin: 10px;
   display: flex;
-  flex-direction: column;
-
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
+  height: 150px;
 }
 
 .vote-img {
@@ -62,7 +63,7 @@
     font-style: italic;
     font-weight: bold;
     padding-left: 10px;
-    width: 80%;
+    width: 70%;
 }
 
 .post-vote {
@@ -70,6 +71,9 @@
     height: 30px;
 }
 
+.post-edit-controls {
+    width: 10%;
+}
 .post-body {
     margin: 30px;
     padding: 30px;

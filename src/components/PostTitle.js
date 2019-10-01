@@ -13,7 +13,7 @@ class PostTitle extends Component {
     console.log("vote", post.id, plusMinus)
 
     dispatch(countVote(post, post.id, plusMinus))
-    saveVote(post.id, plusMinus)    
+    saveVote(post.id, plusMinus)
 
   }
 
@@ -26,15 +26,22 @@ class PostTitle extends Component {
 
       <div className="post-main">
         <div className="post-vote">
-          <p onClick={() => this.vote(post, 1)}>UP</p>
-          <p onClick={() => this.vote(post, -1)}>DOWN</p>
+          <button className='btn' onClick={() => this.vote(post, 1)}>UP</button>
+          <p>{post.voteScore}</p>
+          <button className='btn' onClick={() => this.vote(post, -1)}>DOWN</button>
 
         </div>
-        <Link to={`/${post.category}/${post.id}`}>
-          <div className="post-title">
-            <span className="vote-img">score: {post.voteScore}</span> {post.title}
-          </div>
-        </Link>
+        <div className="post-title">
+            <Link to={`/${post.category}/${post.id}`}>
+                {post.title}
+            </Link>
+        </div>
+
+        <div className="post-edit-controls">
+           <button className='btn'>EDIT</button>
+           <button className='btn'>DELETE</button>
+        </div>
+
       </div>
     )
   }
