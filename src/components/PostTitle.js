@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link  } from 'react-router-dom'
 import { countVote } from '../actions/posts'
+import { saveVote } from '../utils/PostsAPI'
 
 class PostTitle extends Component {
 
@@ -12,6 +13,8 @@ class PostTitle extends Component {
     console.log("vote", post.id, plusMinus)
 
     dispatch(countVote(post, post.id, plusMinus))
+    saveVote(post.id, plusMinus)    
+
   }
 
 

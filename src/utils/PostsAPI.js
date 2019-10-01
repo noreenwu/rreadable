@@ -68,6 +68,34 @@ export function savePost(post) {
   ])
 }
 
+export function saveVote(postid, plusMinus) {
+  console.log("PostsAPI: saveVote ", postid)
+
+  let vote
+  if (plusMinus === 1) {
+    vote = 'upVote'
+  }
+  else if (plusMinus === -1) {
+    vote = 'downVote'
+  }
+  else {
+    return
+  }
+
+  return Promise.all([
+
+  fetch(`${api}/posts/${postid}`, {
+    method: 'POST',
+    headers: { Authorization: "whatever-you-want",
+              'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        option: vote
+      })
+    })
+  ])
+
+}
+
 export function deletePost(id) {
   id = '6ni6ok3ym7mf1p33lnez'  // for now
   //id = '111'

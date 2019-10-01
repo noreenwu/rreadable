@@ -10,7 +10,6 @@ export default function posts (state = {}, action) {
       }
 
     case ADD_POST: {
-      console.log("reducers ADD_POST post was ", action.post)
       return {
         ...state,
         ...action.post
@@ -18,8 +17,6 @@ export default function posts (state = {}, action) {
     }
 
     case COUNT_VOTE: {
-      console.log("reducers COUNT_VOTE ", action.post, action.postid, action.vote)
-
       let newVoteScore = action.post.voteScore + action.vote
       return {
         ...state,
