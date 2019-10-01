@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link  } from 'react-router-dom'
+import { Link, withRouter  } from 'react-router-dom'
 import { countVote, deletePost } from '../actions/posts'
-import { saveVote } from '../utils/PostsAPI'
+import { saveVote, sDeletePost } from '../utils/PostsAPI'
 
 class PostTitle extends Component {
 
@@ -19,9 +19,16 @@ class PostTitle extends Component {
 
   deletePost(postid) {
     const { dispatch } = this.props
+    // const {pathname} = this.props.location;
 
     console.log("delete post")
     dispatch(deletePost(postid))
+
+    // determine through the url (Route) if you need to navigate away or not
+
+    // notify the server that the post has been deleted
+    sDeletePost(postid)
+
   }
 
 
@@ -62,4 +69,4 @@ function mapStateToProps({posts}, {id}) {
   }
 }
 
-export default connect(mapStateToProps)(PostTitle)
+export default withRouter(connect(mapStateToProps)(PostTitle))

@@ -96,20 +96,17 @@ export function saveVote(postid, plusMinus) {
 
 }
 
-export function deletePost(id) {
-  id = '6ni6ok3ym7mf1p33lnez'  // for now
-  //id = '111'
-  fetch(`${api}/posts/${id}`, {
-    method: 'DELETE',
-    headers: { Authorization: "whatever-you-want" },
+export function sDeletePost(postid) {
 
-  })
-  .then(function (data) {
-    console.log('Request success: ', data);
-  })
-  .catch(function (error) {
-    console.log('Request failure: ', error);
-  });
+  return Promise.all([
+
+  fetch(`${api}/posts/${postid}`, {
+    method: 'DELETE',
+    headers: { Authorization: "whatever-you-want",
+              'Content-Type': 'application/json' }
+    })
+  ])
+
 }
 
       /*  ** outside the workspace, do not include credentials
