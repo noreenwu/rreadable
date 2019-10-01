@@ -1,5 +1,6 @@
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const ADD_POST = 'ADD_POST'
+export const COUNT_VOTE = 'COUNT_VOTE'
 
 export function receivePosts (posts) {
   return {
@@ -14,4 +15,15 @@ export function addPost (post) {
     type: ADD_POST,
     post
   }
+}
+
+export function countVote (post, postid, vote) {
+    console.log("actions/countVote postid and vote", post, postid, vote)
+    return {
+      type: COUNT_VOTE,
+      post,
+      postid,
+      vote
+    }
+
 }

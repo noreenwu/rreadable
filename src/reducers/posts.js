@@ -1,4 +1,4 @@
-import { RECEIVE_POSTS, ADD_POST } from '../actions/posts'
+import { RECEIVE_POSTS, ADD_POST, COUNT_VOTE } from '../actions/posts'
 
 export default function posts (state = {}, action) {
 
@@ -14,6 +14,19 @@ export default function posts (state = {}, action) {
       return {
         ...state,
         ...action.post
+      }
+    }
+
+    case COUNT_VOTE: {
+      console.log("reducers COUNT_VOTE ", action.post, action.postid, action.vote)
+
+      let newVoteScore = action.post.voteScore + action.vote
+      return {
+        ...state,
+        [action.postid] : {
+          ...state[action.postid],
+          voteScore: newVoteScore
+        }
       }
     }
     default :

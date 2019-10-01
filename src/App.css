@@ -47,6 +47,7 @@
   margin: 10px;
   display: flex;
   flex-direction: column;
+
   width: 100%;
 }
 
@@ -61,7 +62,12 @@
     font-style: italic;
     font-weight: bold;
     padding-left: 10px;
+    width: 80%;
+}
 
+.post-vote {
+    width: 10%;
+    height: 30px;
 }
 
 .post-body {
