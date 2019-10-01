@@ -17,9 +17,17 @@ class PostTitle extends Component {
 
   }
 
-  deletePost(postid) {
+  deletePost(post, postid) {
+    let gotoPath
+
     const { dispatch } = this.props
-    // const {pathname} = this.props.location;
+    const { pathname } = this.props.location;
+    let lastPathPiece = pathname.split('/').pop()
+    console.log("lastPathPiece ", lastPathPiece)
+    if (lastPathPiece === postid) {
+       // after deletion, navigate to the category
+       gotoPath = `/${post.category}`
+    }
 
     console.log("delete post")
     dispatch(deletePost(postid))
@@ -28,6 +36,10 @@ class PostTitle extends Component {
 
     // notify the server that the post has been deleted
     sDeletePost(postid)
+    console.log("go to path: ", gotoPath)
+    if ( gotoPath ) {
+      this.props.history.push(gotoPath);
+    }
 
   }
 
@@ -52,7 +64,7 @@ class PostTitle extends Component {
 
         <div className="post-edit-controls">
            <button className='btn'>EDIT</button>
-           <button className='btn' onClick={() => this.deletePost(post.id)}>DELETE</button>
+           <button className='btn' onClick={() => this.deletePost(post, post.id)}>DELETE</button>
         </div>
 
       </div>
