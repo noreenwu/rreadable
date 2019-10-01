@@ -17,6 +17,12 @@ class PostTitle extends Component {
 
   }
 
+  editPost(post) {
+    const path = `/${post.category}/${post.id}/edit`
+    this.props.history.push(path);
+
+  }
+
   deletePost(post, postid) {
     let gotoPath
 
@@ -32,10 +38,11 @@ class PostTitle extends Component {
     console.log("delete post")
     dispatch(deletePost(postid))
 
-    // determine through the url (Route) if you need to navigate away or not
 
     // notify the server that the post has been deleted
     sDeletePost(postid)
+
+    // determine through the url (Route) if you need to navigate away or not
     console.log("go to path: ", gotoPath)
     if ( gotoPath ) {
       this.props.history.push(gotoPath);
@@ -46,6 +53,7 @@ class PostTitle extends Component {
 
   render() {
     const { post } = this.props
+
 
     return (
 
@@ -63,12 +71,21 @@ class PostTitle extends Component {
         </div>
 
         <div className="post-edit-controls">
-           <button className='btn'>EDIT</button>
+           <button className='btn' onClick={() => this.editPost(post)}>EDIT</button>
+           <Link to={{
+                pathname: `/${post.category}/${post.id}/edit`,
+                state: { post: post
+                  }
+                }}>
+
+               <button className='btn'>EDIT LINK</button>
+           </Link>
            <button className='btn' onClick={() => this.deletePost(post, post.id)}>DELETE</button>
         </div>
 
       </div>
     )
+
   }
 }
 

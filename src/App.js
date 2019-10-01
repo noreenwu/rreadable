@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Dashboard from './components/Dashboard'
 import PostDetail from './components/PostDetail'
+import EditPost from './components/EditPost'
 import './App.css';
 import { handleInitialData } from './actions/shared'
 
@@ -57,7 +58,8 @@ class App extends Component {
                 <Switch>
                   <Route path='/' exact component={Dashboard} />
                   <Route path='/:category' exact component={Dashboard} />
-                  <Route path='/:category/:post_id' component={PostDetail} />
+                  <Route path='/:category/:post_id' exact component={PostDetail} />
+                  <Route path='/:category/:post_id/edit' component={EditPost} />
 
                 </Switch>
                 </Fragment>

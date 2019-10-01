@@ -20,7 +20,6 @@ class PostListItem extends Component {
 
           <div className="post-info">
 
-
                 <PostTitle id={post.id}/>
 
           </div>
@@ -38,7 +37,7 @@ function mapStateToProps({posts}, ownProps) {
       post: null
     }
   }
-  console.log("postlistitem ownProps", ownProps)
+
   const post = posts[id]
   return {
      post: post,

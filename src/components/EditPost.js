@@ -3,14 +3,29 @@ import { connect } from 'react-redux'
 import { handleNewPost } from '../actions/shared'
 import { getNewId } from '../utils/helpers'
 
-class CreatePost extends Component {
+class EditPost extends Component {
+
+  componentDidMount() {
+      const { post } = this.props.location.state
+
+      const { title, author, body, category } = post
+
+      console.log("EditPost componentDidMount ", post.title)
+      this.setState({
+        title: title,
+        author: author,
+        body: body,
+        category: category
+      })
+  }
+
   constructor(props) {
     super(props)
 
     this.state = {
       title: '',
-      body: '',
       author: '',
+      body: '',
       category: ''
     }
     this.handleChange = this.handleChange.bind(this);
@@ -64,9 +79,12 @@ class CreatePost extends Component {
 
   render() {
     const { categories } = this.props
-    // console.log("CreatePost categories ", categories)
+    console.log("EditPost ", this.state)
+
+
     return(
        <div className="container">
+          <h3>Edit Post </h3>
           <form onSubmit={this.handleSubmit}>
             <input
               className='input-half'
@@ -116,7 +134,8 @@ class CreatePost extends Component {
 }
 
 
-function mapStateToProps( {categories}) {
+function mapStateToProps( {categories} ) {
+
 
 
   return{
@@ -124,4 +143,4 @@ function mapStateToProps( {categories}) {
   }
 
 }
-export default connect(mapStateToProps)(CreatePost)
+export default connect(mapStateToProps)(EditPost)
