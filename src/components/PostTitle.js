@@ -71,7 +71,7 @@ class PostTitle extends Component {
         </div>
 
         <div className="post-edit-controls">
-           <button className='btn' onClick={() => this.editPost(post)}>EDIT</button>
+           
            <Link to={{
                 pathname: `/${post.category}/${post.id}/edit`,
                 state: { post: post

@@ -4,6 +4,7 @@ import { Link  } from 'react-router-dom'
 import PostListItem from './PostListItem'
 //import { savePost, deletePost } from '../utils/PostsAPI'
 import CreatePost from './CreatePost'
+import CategoryNav from './CategoryNav'
 
 const TIMESTAMP = 'timestamp'
 const VOTESCORE = 'votescore'
@@ -58,7 +59,7 @@ class Dashboard extends Component {
 
   render() {
 
-    let { posts, categories, category } = this.props
+    let { posts, category } = this.props
     let workingPosts = posts
 
     if (category === 'all') {
@@ -103,23 +104,10 @@ class Dashboard extends Component {
 
            </div>
 
-           <div className="categoryList">
+           <CategoryNav />
 
-            <Link to={'/'}>
-            <button
-              className='btn'
-            >all
-            </button>
-            </Link>
-           { categories.map(c =>
-             <Fragment key={c.name}>
-                <Link to={`/${c.path}`}>
-                    <button className='btn'>{c.name}</button>
-                </Link>
-              </Fragment>
-            )}
 
-           </div>
+
 
            { sortedPosts.length === 0
              ? <div> No posts in this category </div>
@@ -145,11 +133,13 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps( {posts, categories}, ownProps) {
-  let {category} = ownProps.match.params
+  // let {category} = ownProps.match.params
+  let category = ownProps.location.pathname.split('/').pop()
 
-  if ( category === undefined ) {
+  if ( category === '') {
     category = 'all'
   }
+  console.log("Dashboard: category", category)
 
   return{
     category,

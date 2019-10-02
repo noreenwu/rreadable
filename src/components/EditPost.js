@@ -1,7 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { saveEditedPost } from '../actions/posts'
 import { savePostEdits } from '../utils/PostsAPI'
+import CategoryNav from './CategoryNav'
+
 
 class EditPost extends Component {
 
@@ -73,39 +75,42 @@ class EditPost extends Component {
 
 
     return(
-       <div className="container">
-          <h3>Edit Post </h3>
-          <form onSubmit={this.handleSubmit}>
-            author: {this.state.author}
-            <br/>
+       <Fragment>
+         <CategoryNav />
 
-            category: {this.state.category}
-            <br/>
+         <div className="container">
+            <h3>Edit Post </h3>
+            <form onSubmit={this.handleSubmit}>
+              author: {this.state.author}
+              <br/>
 
-            <input
-              type='text'
-              name='title'
-              placeholder='enter title for your post here'
-              size={80}
-              value={this.state.title}
-              onChange={this.handleChange}
-            />
+              category: {this.state.category}
+              <br/>
 
-            <textarea
-              size={80} name='body'
-              placeholder='the body of your post here'
-              value={this.state.body} onChange={this.handleChange} /><br/>
+              <input
+                type='text'
+                name='title'
+                placeholder='enter title for your post here'
+                size={80}
+                value={this.state.title}
+                onChange={this.handleChange}
+              />
 
-            <button
-              className='btn'
-              type='submit'
-              disabled={ this.state.title === '' || this.state.body === '' }>
-                Submit
-            </button>
+              <textarea
+                size={80} name='body'
+                placeholder='the body of your post here'
+                value={this.state.body} onChange={this.handleChange} /><br/>
 
-          </form>
-       </div>
+              <button
+                className='btn'
+                type='submit'
+                disabled={ this.state.title === '' || this.state.body === '' }>
+                  Submit
+              </button>
 
+            </form>
+         </div>
+       </Fragment>
     )
   }
 }
