@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PostListItem from './PostListItem'
+import { Link  } from 'react-router-dom'
 //import { savePost, deletePost } from '../utils/PostsAPI'
 import CreatePost from './CreatePost'
 import CategoryNav from './CategoryNav'
@@ -116,6 +117,14 @@ class Dashboard extends Component {
 
            <div onClick={() => this.showNewPostForm()}>Create new post</div>
 
+
+           <Link to={{
+                pathname: `/${category}/create`,
+                state: { category
+                  }
+                }}>
+           <button className="btn">NEW Create New Post</button>
+           </Link>
 
            { this.state.mode === CREATE
              ? <CreatePost />

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { handleNewPost } from '../actions/posts'
 import { getNewId } from '../utils/helpers'
@@ -27,10 +27,10 @@ class CreatePost extends Component {
   }
 
 
-  handleSubmit(event) {
-    event.preventDefault()
+  handleSubmit() {
+    // event.preventDefault()
     const { dispatch } = this.props
-
+    console.log("CreatePost: handleSubmit", this.state.category)
     let newId = getNewId()
 
     const newPost = { [newId] : { id: newId,
@@ -52,13 +52,10 @@ class CreatePost extends Component {
          body: '',
          author: ''
     }))
-   // clear the form fields
-    // this.setState = ({
-    //   title: '',
-    //   body: '',
-    //   author: ''
-    // })
 
+    // navigate to the category in which the new post was posted
+    let gotoPath = `/${this.state.category}`
+    this.props.history.push(gotoPath)
 
   }
 
@@ -66,51 +63,53 @@ class CreatePost extends Component {
     const { categories } = this.props
     // console.log("CreatePost categories ", categories)
     return(
-       <div className="container">
-          <form onSubmit={this.handleSubmit}>
-            <input
-              className='input-half'
-              type='text'
-              name='author'
-              placeholder='enter your name here'
-              value={this.state.author}
-              onChange={this.handleChange}
-            /><br/>
+       <Fragment>
+         <h3>New Post</h3>
+         <div className="container">
+            <form onSubmit={this.handleSubmit}>
+              <input
+                className='input-half'
+                type='text'
+                name='author'
+                placeholder='enter your name here'
+                value={this.state.author}
+                onChange={this.handleChange}
+              /><br/>
 
-            <select value={this.state.category}
-                    name='category'
-                    onChange={(event) => this.handleChange(event)}>
-                       <option key={'default'} value=''>Select category</option>
-                    { categories.map( v =>
-                        <option key={v.name} value={v.name}>{v.name}</option>
-                    )}
+              <select value={this.state.category}
+                      name='category'
+                      onChange={(event) => this.handleChange(event)}>
+                         <option key={'default'} value=''>Select category</option>
+                      { categories.map( v =>
+                          <option key={v.name} value={v.name}>{v.name}</option>
+                      )}
 
-            </select><br/>
+              </select><br/>
 
-            <input
-              type='text'
-              name='title'
-              placeholder='enter title for your post here'
-              size={80}
-              value={this.state.title}
-              onChange={this.handleChange}
-            />
+              <input
+                type='text'
+                name='title'
+                placeholder='enter title for your post here'
+                size={80}
+                value={this.state.title}
+                onChange={this.handleChange}
+              />
 
-            <textarea
-              size={80} name='body'
-              placeholder='the body of your post here'
-              value={this.state.body} onChange={this.handleChange} /><br/>
+              <textarea
+                size={80} name='body'
+                placeholder='the body of your post here'
+                value={this.state.body} onChange={this.handleChange} /><br/>
 
-            <button
-              className='btn'
-              type='submit'
-              disabled={this.state.title === '' || this.state.body === '' || this.state.author === '' || this.state.category === '' }>
-                Submit
-            </button>
+              <button
+                className='btn'
+                type='submit'
+                disabled={this.state.title === '' || this.state.body === '' || this.state.author === '' || this.state.category === '' }>
+                  Submit
+              </button>
 
-          </form>
-       </div>
-
+            </form>
+         </div>
+       </Fragment>
     )
   }
 }

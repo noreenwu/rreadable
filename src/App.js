@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Dashboard from './components/Dashboard'
 import PostDetail from './components/PostDetail'
 import EditPost from './components/EditPost'
+import CreatePost from './components/CreatePost'
 import './App.css';
 import { handleInitialData } from './actions/shared'
 
@@ -14,30 +15,8 @@ class App extends Component {
 
 
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
-   //  PostsAPI.getAllCategories()
-   //   .then((categories) => {
-   //       this.setState(() => ({
-   //         categories
-   //       }))
-   //    })
-   //   .then((res) => {
-   //       this.setState({ catsLoading: false })
-   //   })
-   //
-   //
-   //
-   // PostsAPI.getAllPosts()
-   //    .then((posts) => {
-   //   console.log("App data", posts)
-   //       this.setState({
-   //             posts
-   //         });
-   //     })
-   //   .then((res) => {
-   //       this.setState({ loading: false })
-   //   })
 
+    this.props.dispatch(handleInitialData())
   }
 
 
@@ -58,8 +37,9 @@ class App extends Component {
                 <Switch>
                   <Route path='/' exact component={Dashboard} />
                   <Route path='/:category' exact component={Dashboard} />
+                  <Route path='/:category/create' exact component={CreatePost} />
                   <Route path='/:category/:post_id' exact component={PostDetail} />
-                  <Route path='/:category/:post_id/edit' component={EditPost} />
+                  <Route path='/:category/:post_id/edit' exact component={EditPost} />
 
                 </Switch>
                 </Fragment>
