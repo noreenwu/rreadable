@@ -1,3 +1,5 @@
+import { savePost } from '../utils/PostsAPI'
+
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const ADD_POST = 'ADD_POST'
 export const COUNT_VOTE = 'COUNT_VOTE'
@@ -47,4 +49,20 @@ export function deletePost (postid) {
      type: DELETE_POST,
      postid
    }
+}
+
+export function handleNewPost (post, id) {
+  console.log("shared: handleNewPost post was ", post[id])
+  // return(dispatch) => {
+  //    //return savePost(post)
+  //    return(console.log("some API call"))
+  //       .then ((post) => dispatch( addPost(post)))
+  // }
+
+
+  savePost(post[id])  // not complaining on save but reloading reveals that something saved but not the info intended (mostly undefined)
+
+  return (dispatch) => {
+      dispatch(addPost(post))
+  }
 }

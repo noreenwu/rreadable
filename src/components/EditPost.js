@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-//import { handleNewPost } from '../actions/shared'
-//import { getNewId } from '../utils/helpers'
 import { saveEditedPost } from '../actions/posts'
 
 
@@ -101,7 +99,7 @@ class EditPost extends Component {
             <button
               className='btn'
               type='submit'
-              disabled={this.state.title === '' || this.state.body === '' || this.state.author === '' || this.state.category === '' }>
+              disabled={ this.state.title === '' || this.state.body === '' }>
                 Submit
             </button>
 

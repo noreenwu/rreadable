@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleNewPost } from '../actions/shared'
+import { handleNewPost } from '../actions/posts'
 import { getNewId } from '../utils/helpers'
 
 class CreatePost extends Component {
