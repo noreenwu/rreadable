@@ -98,6 +98,11 @@
   border: 1px solid black;
 }
 
+.comment-vote {
+  width: 10%;
+  height: 30px;  
+}
+
 .comment-body {
   margin: 30px;
 }

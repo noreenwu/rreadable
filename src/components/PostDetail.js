@@ -64,7 +64,7 @@ class PostDetail extends Component {
 
 
             { this.state.comments.map( c =>
-                <Comment key={c.id} comment={c}/>
+                <Comment key={c.id} comment={c} post={post}/>
             )}
 
 
