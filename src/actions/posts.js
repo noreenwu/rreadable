@@ -60,7 +60,7 @@ export function handleNewPost (post, id) {
   // }
 
 
-  savePost(post[id])  // not complaining on save but reloading reveals that something saved but not the info intended (mostly undefined)
+  savePost(post[id])  
 
   return (dispatch) => {
       dispatch(addPost(post))

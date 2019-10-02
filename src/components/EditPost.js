@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { saveEditedPost } from '../actions/posts'
-
+import { savePostEdits } from '../utils/PostsAPI'
 
 class EditPost extends Component {
 
@@ -58,7 +58,7 @@ class EditPost extends Component {
 
 
    dispatch(saveEditedPost(editedPost, postId))
-
+   savePostEdits(editedPost[postId])
 
     // navigate to category page
     const path = `/${this.state.category}/${postId}`

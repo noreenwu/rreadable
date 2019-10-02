@@ -68,6 +68,22 @@ export function savePost(post) {
   ])
 }
 
+export function savePostEdits(post) {
+  return Promise.all([
+
+  fetch(`${api}/posts/${post.id}`, {
+    method: 'PUT',
+    headers: { Authorization: "whatever-you-want",
+              'Content-Type': 'application/json' },
+    body: JSON.stringify({            // or post[post.id]
+        title: post.title,
+        body: post.body
+      })
+  })
+])  
+}
+
+
 export function saveVote(postid, plusMinus) {
   console.log("PostsAPI: saveVote ", postid)
 
