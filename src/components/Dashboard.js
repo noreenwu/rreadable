@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link  } from 'react-router-dom'
 import PostListItem from './PostListItem'
 //import { savePost, deletePost } from '../utils/PostsAPI'
 import CreatePost from './CreatePost'
@@ -115,9 +114,8 @@ class Dashboard extends Component {
               <PostListItem key={p.id} id={p.id}/>
            )}
 
-           <div onClick={() => this.showNewPostForm()}>Create new post test</div>
+           <div onClick={() => this.showNewPostForm()}>Create new post</div>
 
-           <div onClick={() => this.handleDelete()}>Delete post test</div>
 
            { this.state.mode === CREATE
              ? <CreatePost />
