@@ -18,6 +18,18 @@ class CreatePost extends Component {
 
   }
 
+  componentDidMount() {
+      let { category } = this.props.location.state
+
+      console.log("CreatePost componentDidMount ", category)
+      if (category === 'all') {
+        category =''
+      }
+
+      this.setState({
+        category: category
+      })
+  }
 
   handleChange(e) {
     console.log("handleChange", e.target.name, e.target.value)

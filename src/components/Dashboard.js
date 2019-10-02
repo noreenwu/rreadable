@@ -107,20 +107,16 @@ class Dashboard extends Component {
            <CategoryNav />
 
 
-
-
            { sortedPosts.length === 0
              ? <div> No posts in this category </div>
              : sortedPosts.map((p) =>
               <PostListItem key={p.id} id={p.id}/>
            )}
 
-           <div onClick={() => this.showNewPostForm()}>Create new post</div>
-
 
            <Link to={{
                 pathname: `/${category}/create`,
-                state: { category
+                state: { category: category
                   }
                 }}>
            <button className="btn">NEW Create New Post</button>
