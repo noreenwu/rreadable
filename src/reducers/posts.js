@@ -1,4 +1,4 @@
-import { RECEIVE_POSTS, ADD_POST, COUNT_VOTE, DELETE_POST } from '../actions/posts'
+import { RECEIVE_POSTS, ADD_POST, COUNT_VOTE, DELETE_POST, SAVE_EDITED_POST } from '../actions/posts'
 
 export default function posts (state = {}, action) {
 
@@ -14,6 +14,21 @@ export default function posts (state = {}, action) {
         ...state,
         ...action.post
       }
+    }
+
+    case SAVE_EDITED_POST: {
+        console.log("SAVE_EDITED_POST reducer ", action.post[action.postid].body, action.postid)
+        let postid = action.postid
+        let newBody = action.post[postid].body
+        let newTitle = action.post[postid].title
+        return {
+          ...state,
+          [action.postid] : {
+            ...state[action.postid],
+            body: newBody,
+            title: newTitle
+          }
+        }
     }
 
     case COUNT_VOTE: {

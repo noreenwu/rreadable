@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleNewPost } from '../actions/shared'
-import { getNewId } from '../utils/helpers'
+//import { handleNewPost } from '../actions/shared'
+//import { getNewId } from '../utils/helpers'
+import { saveEditedPost } from '../actions/posts'
+
 
 class EditPost extends Component {
 
   componentDidMount() {
       const { post } = this.props.location.state
 
-      const { title, author, body, category } = post
+      const { id, title, author, body, category } = post
 
       console.log("EditPost componentDidMount ", post.title)
       this.setState({
+        id: id,
         title: title,
         author: author,
         body: body,
@@ -23,6 +26,7 @@ class EditPost extends Component {
     super(props)
 
     this.state = {
+      id: '',
       title: '',
       author: '',
       body: '',
@@ -46,39 +50,27 @@ class EditPost extends Component {
     event.preventDefault()
     const { dispatch } = this.props
 
-    let newId = getNewId()
+    let postId = this.state.id
 
-    const newPost = { [newId] : { id: newId,
-                                  timestamp: Date.now(),
-                                  title: this.state.title,
-                                  body: this.state.body,
-                                  author: this.state.author,
-                                  voteScore: 1,
-                                  commentCount: 0,
-                                  category: this.state.category
-                                }
-                      }
-
-   dispatch(handleNewPost(newPost, newId))
+    const editedPost = { [postId] : { id: postId,
+                                      title: this.state.title,
+                                      body: this.state.body,
+                                    }
+                       }
 
 
-   this.setState(() => ({
-         title: '',
-         body: '',
-         author: ''
-    }))
-   // clear the form fields
-    // this.setState = ({
-    //   title: '',
-    //   body: '',
-    //   author: ''
-    // })
+   dispatch(saveEditedPost(editedPost, postId))
+
+
+    // navigate to category page
+    const path = `/${this.state.category}/${postId}`
+    this.props.history.push(path);
 
 
   }
 
   render() {
-    const { categories } = this.props
+    // const { categories } = this.props
     console.log("EditPost ", this.state)
 
 
@@ -86,24 +78,11 @@ class EditPost extends Component {
        <div className="container">
           <h3>Edit Post </h3>
           <form onSubmit={this.handleSubmit}>
-            <input
-              className='input-half'
-              type='text'
-              name='author'
-              placeholder='enter your name here'
-              value={this.state.author}
-              onChange={this.handleChange}
-            /><br/>
+            author: {this.state.author}
+            <br/>
 
-            <select value={this.state.category}
-                    name='category'
-                    onChange={(event) => this.handleChange(event)}>
-                       <option key={'default'} value=''>Select category</option>
-                    { categories.map( v =>
-                        <option key={v.name} value={v.name}>{v.name}</option>
-                    )}
-
-            </select><br/>
+            category: {this.state.category}
+            <br/>
 
             <input
               type='text'
@@ -136,11 +115,9 @@ class EditPost extends Component {
 
 function mapStateToProps( {categories} ) {
 
-
-
   return{
       categories: Object.values(categories)
   }
-
 }
+
 export default connect(mapStateToProps)(EditPost)

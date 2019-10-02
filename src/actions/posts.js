@@ -2,6 +2,7 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const ADD_POST = 'ADD_POST'
 export const COUNT_VOTE = 'COUNT_VOTE'
 export const DELETE_POST = 'DELETE_POST'
+export const SAVE_EDITED_POST = 'SAVE_EDITED_POST'
 
 
 export function receivePosts (posts) {
@@ -17,6 +18,15 @@ export function addPost (post) {
     type: ADD_POST,
     post
   }
+}
+
+export function saveEditedPost (post, postid) {
+    console.log("actions/saveEditedPost ", post, postid)
+    return {
+      type: SAVE_EDITED_POST,
+      post,
+      postid
+    }
 }
 
 export function countVote (post, postid, vote) {
