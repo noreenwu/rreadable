@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard'
 import PostDetail from './components/PostDetail'
 import EditPost from './components/EditPost'
 import CreatePost from './components/CreatePost'
+import NewComment from './components/NewComment'
 import './App.css';
 import { handleInitialData } from './actions/shared'
 
@@ -40,6 +41,7 @@ class App extends Component {
                   <Route path='/:category/create' exact component={CreatePost} />
                   <Route path='/:category/:post_id' exact component={PostDetail} />
                   <Route path='/:category/:post_id/edit' exact component={EditPost} />
+                  <Route path='/:category/:post_id/newcomment' exact component={NewComment} />
 
                 </Switch>
                 </Fragment>

@@ -6,7 +6,7 @@ import PostTitle from './PostTitle'
 import PostBody from './PostBody'
 import { getComments } from '../utils/PostsAPI'
 import CategoryNav from './CategoryNav'
-
+import Comment from './Comment'
 
 class PostDetail extends Component {
 
@@ -62,8 +62,11 @@ class PostDetail extends Component {
             <PostTitle id={post.id}/>
             <PostBody id={post.id}/>
 
-            { this.state.comments.map(com =>
-                <li key={com.id}>{com.body}</li> )}
+
+            { this.state.comments.map( c =>
+                <Comment key={c.id} comment={c}/>
+            )}
+
 
             <Link to={`/${post.category}`}>
                <div>Go to category listing</div>
@@ -72,6 +75,13 @@ class PostDetail extends Component {
             <Link to={'/'}>
                <div>Go to full listing</div>
             </Link>
+
+            <Link to={{
+                 pathname: `/${post.category}/${post.id}/newcomment`
+                 }}>
+            <button className="btn">NEW COMMENT</button>
+            </Link>
+
           </div>
         </Fragment>
       )

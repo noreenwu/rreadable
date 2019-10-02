@@ -80,6 +80,28 @@
     border: 1px solid black;
 }
 
+.comment-frame {
+  width: 100%;
+  height: 200px;
+  max-width: 800px;
+  padding: 10px;
+  margin: 20px auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.comment-header {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.comment-body {
+  margin: 30px;
+}
+
 input[type=text], textarea {
   padding: 12px 20px;
   margin: 8px 0;
