@@ -80,23 +80,35 @@ export function savePostEdits(post) {
         body: post.body
       })
   })
-])  
+])
+}
+
+
+function getOption(plusMinus) {
+
+  if (plusMinus === 1) {
+    return 'upVote'
+  }
+  else if (plusMinus === -1) {
+    return 'downVote'
+  }
+
 }
 
 
 export function saveVote(postid, plusMinus) {
   console.log("PostsAPI: saveVote ", postid)
 
-  let vote
-  if (plusMinus === 1) {
-    vote = 'upVote'
-  }
-  else if (plusMinus === -1) {
-    vote = 'downVote'
-  }
-  else {
-    return
-  }
+  let vote = getOption(plusMinus)
+  // if (plusMinus === 1) {
+  //   vote = 'upVote'
+  // }
+  // else if (plusMinus === -1) {
+  //   vote = 'downVote'
+  // }
+  // else {
+  //   return
+  // }
 
   return Promise.all([
 
@@ -120,6 +132,26 @@ export function sDeletePost(postid) {
     method: 'DELETE',
     headers: { Authorization: "whatever-you-want",
               'Content-Type': 'application/json' }
+    })
+  ])
+
+}
+
+
+export function saveCommentVote(commentId, plusMinus) {
+  console.log("PostsAPI: commentVote ", commentId)
+
+  let vote = getOption(plusMinus)
+
+  return Promise.all([
+
+  fetch(`${api}/comments/${commentId}`, {
+    method: 'POST',
+    headers: { Authorization: "whatever-you-want",
+              'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        option: vote
+      })
     })
   ])
 

@@ -1,18 +1,43 @@
 import React, { Component } from 'react'
 import { formatDate } from '../utils/helpers'
-import { Link  } from 'react-router-dom'
-
+import { Link, withRouter  } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { saveCommentVote } from '../utils/PostsAPI'
 
 
 class Comment extends Component {
 
-  vote(comment) {
+  vote(comment, plusMinus) {
 
+    //const { dispatch } = this.props
+
+    console.log("comment vote", comment.id, plusMinus, this.state.voteScore)
+
+    let newVoteScore = this.state.voteScore + plusMinus
+    this.setState({
+      voteScore: newVoteScore
+    })
+
+    saveCommentVote(comment.id, plusMinus)
+    //dispatch(countCommentVote(comment, comment.id, plusMinus))
+  }
+
+  componentDidMount() {
+     const {voteScore} = this.props.comment
+
+     this.setState({
+       voteScore: voteScore
+     })
+  }
+
+
+  state = {
+    voteScore: 0
   }
 
   render() {
     const { comment, post } = this.props
-    console.log("Comment", comment)
+    //console.log("Comment", comment)
 
     return (
         <div className="comment-frame">
@@ -20,7 +45,7 @@ class Comment extends Component {
             <div className="comment-main">
                 <div className="comment-vote">
                   <button className='btn' onClick={() => this.vote(comment, 1)}>UP</button>
-                  <p>{comment.voteScore}</p>
+                  <p>{this.state.voteScore}</p>
                   <button className='btn' onClick={() => this.vote(comment, -1)}>DOWN</button>
 
                 </div>
@@ -49,4 +74,4 @@ class Comment extends Component {
 }
 
 
-export default Comment
+export default withRouter(connect(null, null)(Comment))
