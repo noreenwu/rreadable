@@ -36,9 +36,11 @@ class Comment extends Component {
                           }
                         }}>
 
-                       <button className='btn'>EDIT LINK</button>
+                       <button className='btn'>EDIT</button>
                    </Link>
-                   <button className='btn' onClick={() => this.deletePost(comment, comment.id)}>DELETE</button>
+                   <p>
+                    <button className='btn' onClick={() => this.deletePost(comment, comment.id)}>DELETE</button>
+                   </p>
                 </div>
             </div>
         </div>
