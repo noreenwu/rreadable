@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CategoryNav from './CategoryNav'
-
+import { saveCommentEdits } from '../utils/PostsAPI'
 
 class EditComment extends Component {
 
@@ -26,6 +26,11 @@ class EditComment extends Component {
     body: '',
     category: ''
   }
+
+  updateComment(comment) {
+    saveCommentEdits(comment)
+  }
+
   render() {
 
 

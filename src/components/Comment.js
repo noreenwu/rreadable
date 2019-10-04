@@ -32,7 +32,7 @@ class Comment extends Component {
 
 
 
-  deleteComment(commentid) {
+  deleteComment(commentid, loadComments, p) {
      console.log("deleteComment", commentid)
 
      deleteComment(commentid)
@@ -47,9 +47,10 @@ class Comment extends Component {
        state: this.state,
      });
 
-     const newPath = `/${post.category}/${post.id}`
-     this.props.history.push(newPath);
-     window.location.reload();
+     loadComments(post.id, p)   // this lives in the parent, PostDetail
+     // const newPath = `/${post.category}/${post.id}`
+     // this.props.history.push(newPath);
+     // window.location.reload();
 
   }
 
@@ -58,7 +59,7 @@ class Comment extends Component {
   }
 
   render() {
-    const { comment, post } = this.props
+    const { comment, post, loadComments, p } = this.props
     //console.log("Comment", comment)
 
     return (
@@ -86,7 +87,7 @@ class Comment extends Component {
                        <button className='btn'>EDIT</button>
                    </Link>
                    <p>
-                    <button className='btn' onClick={() => this.deleteComment(comment.id)}>DELETE</button>
+                    <button className='btn' onClick={() => this.deleteComment(comment.id, loadComments, p)}>DELETE</button>
                    </p>
                 </div>
             </div>

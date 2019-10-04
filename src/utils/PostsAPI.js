@@ -162,6 +162,20 @@ export function saveCommentVote(commentId, plusMinus) {
 
 }
 
+export function saveCommentEdits(comment) {
+  return Promise.all([
+
+  fetch(`${api}/comments/${comment.id}`, {
+    method: 'PUT',
+    headers: { Authorization: "whatever-you-want",
+              'Content-Type': 'application/json' },
+    body: JSON.stringify({
+              timestamp: comment.timestamp,
+              body: comment.body
+    })
+  })
+])
+}
 
 export function deleteComment(commentid) {
 

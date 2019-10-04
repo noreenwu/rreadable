@@ -24,14 +24,18 @@ class PostDetail extends Component {
     }
 
     console.log("id in componentDidMount", id)
+    this.loadComments(id, this)
+
+  }
+
+  loadComments(id, p) {
     getComments (id)
       .then((comments) => {
-        this.setState(() => ({
+        p.setState(() => ({
           comments,
           commentsLoaded: true
         }))
       })
-
   }
 
   render() {
@@ -64,7 +68,12 @@ class PostDetail extends Component {
 
 
             { this.state.comments.map( c =>
-                <Comment key={c.id} comment={c} post={post}/>
+                <Comment key={c.id}
+                         comment={c}
+                         post={post}
+                         loadComments={this.loadComments}
+                         p={this}
+                      />
             )}
 
 
