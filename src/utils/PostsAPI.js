@@ -163,6 +163,7 @@ export function saveCommentVote(commentId, plusMinus) {
 }
 
 export function saveCommentEdits(comment) {
+  console.log("save comment edits", comment)
   return Promise.all([
 
   fetch(`${api}/comments/${comment.id}`, {

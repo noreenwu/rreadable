@@ -45,7 +45,14 @@ class EditComment extends Component {
       e.preventDefault()
       console.log("handleSubmit")
 
-      // navigate back to post detail
+      const newComment = {
+        id: this.state.id,
+        timestamp: Date.now(),
+        body: this.state.body
+      }
+
+      this.updateComment(newComment)
+
       // navigate back to parent post
       this.props.history.push(this.state.gotoLocation)
   }
