@@ -77,7 +77,8 @@ class PostDetail extends Component {
             </Link>
 
             <Link to={{
-                 pathname: `/${post.category}/${post.id}/newcomment`
+                 pathname: `/${post.category}/${post.id}/newcomment`,
+                 state: post
                  }}>
             <button className="btn">NEW COMMENT</button>
             </Link>

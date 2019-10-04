@@ -39,8 +39,8 @@ class CreatePost extends Component {
   }
 
 
-  handleSubmit() {
-    // event.preventDefault()
+  handleSubmit(event) {
+    event.preventDefault()
     const { dispatch } = this.props
     console.log("CreatePost: handleSubmit", this.state.category)
     let newId = getNewId()

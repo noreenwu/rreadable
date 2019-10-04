@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { formatDate } from '../utils/helpers'
 import { Link, withRouter  } from 'react-router-dom'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import { saveCommentVote } from '../utils/PostsAPI'
 
 
@@ -9,7 +9,6 @@ class Comment extends Component {
 
   vote(comment, plusMinus) {
 
-    //const { dispatch } = this.props
 
     console.log("comment vote", comment.id, plusMinus, this.state.voteScore)
 
@@ -19,7 +18,7 @@ class Comment extends Component {
     })
 
     saveCommentVote(comment.id, plusMinus)
-    //dispatch(countCommentVote(comment, comment.id, plusMinus))
+
   }
 
   componentDidMount() {
@@ -74,4 +73,6 @@ class Comment extends Component {
 }
 
 
-export default withRouter(connect(null, null)(Comment))
+// export default withRouter(connect(null, null)(Comment))
+
+export default Comment

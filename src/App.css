@@ -21,6 +21,10 @@
   color: #09d3ac;
 }
 
+.strong {
+  font-weight: bold;
+}
+
 .post-frame {
   width: 100%;
   max-width: 900px;

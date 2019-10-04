@@ -137,6 +137,20 @@ export function sDeletePost(postid) {
 
 }
 
+export function saveComment(comment) {
+    console.log("PostAPI: saveComment id ", comment.id)
+    console.log("PostAPI and the full comment is ", comment)
+
+    return Promise.all([
+
+    fetch(`${api}/comments`, {
+      method: 'POST',
+      headers: { Authorization: "whatever-you-want",
+                'Content-Type': 'application/json' },
+      body: JSON.stringify(comment)
+    })
+  ])
+}
 
 export function saveCommentVote(commentId, plusMinus) {
   console.log("PostsAPI: commentVote ", commentId)
