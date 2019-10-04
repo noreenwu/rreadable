@@ -108,7 +108,7 @@ class Dashboard extends Component {
 
 
            { sortedPosts.length === 0
-             ? <div> No posts in this category </div>
+             ? <div> No posts in the {category} category</div>
              : sortedPosts.map((p) =>
               <PostListItem key={p.id} id={p.id}/>
            )}
