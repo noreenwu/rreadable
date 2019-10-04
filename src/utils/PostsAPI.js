@@ -162,6 +162,19 @@ export function saveCommentVote(commentId, plusMinus) {
 
 }
 
+
+export function deleteComment(commentid) {
+
+  return Promise.all([
+
+  fetch(`${api}/comments/${commentid}`, {
+    method: 'DELETE',
+    headers: { Authorization: "whatever-you-want",
+              'Content-Type': 'application/json' }
+    })
+  ])
+
+}
       /*  ** outside the workspace, do not include credentials
 
         componentDidMount() {

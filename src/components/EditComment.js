@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import CategoryNav from './CategoryNav'
 
 
 class EditComment extends Component {
@@ -31,6 +31,7 @@ class EditComment extends Component {
 
      return (
         <div>
+          <CategoryNav/>
           <div>Respond to...</div>
           <h3>{this.state.title}</h3>
           <div>Edit Comment</div>

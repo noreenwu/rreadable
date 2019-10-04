@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { formatDate } from '../utils/helpers'
-import { Link, withRouter  } from 'react-router-dom'
-// import { connect } from 'react-redux'
-import { saveCommentVote } from '../utils/PostsAPI'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { saveCommentVote, deleteComment } from '../utils/PostsAPI'
+import { updateCommentCount } from '../actions/posts'
 
 
 class Comment extends Component {
@@ -29,8 +30,27 @@ class Comment extends Component {
      })
   }
 
-  deleteComment() {
-     console.log("deleteComment")
+
+
+  deleteComment(commentid) {
+     console.log("deleteComment", commentid)
+
+     deleteComment(commentid)
+
+
+     const { dispatch, post } = this.props
+
+     dispatch(updateCommentCount(post, -1))
+
+     // force re-render
+     this.setState({
+       state: this.state,
+     });
+
+     const newPath = `/${post.category}/${post.id}`
+     this.props.history.push(newPath);
+     window.location.reload();
+
   }
 
   state = {
@@ -66,7 +86,7 @@ class Comment extends Component {
                        <button className='btn'>EDIT</button>
                    </Link>
                    <p>
-                    <button className='btn' onClick={() => this.deleteComment(comment, comment.id)}>DELETE</button>
+                    <button className='btn' onClick={() => this.deleteComment(comment.id)}>DELETE</button>
                    </p>
                 </div>
             </div>
@@ -76,6 +96,7 @@ class Comment extends Component {
 }
 
 
-// export default withRouter(connect(null, null)(Comment))
 
-export default Comment
+export default withRouter(connect(null, null)(Comment))
+
+// export default Comment

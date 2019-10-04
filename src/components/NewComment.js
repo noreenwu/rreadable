@@ -59,7 +59,7 @@ class NewComment extends Component {
 
      // update the parent post's commentCount in redux
      const { dispatch } = this.props
-     dispatch(updateCommentCount(this.state.post))
+     dispatch(updateCommentCount(this.state.post, 1))
 
      // navigate back to parent post
      this.props.history.push(this.state.gotoLocation)

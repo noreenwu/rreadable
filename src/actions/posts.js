@@ -51,12 +51,13 @@ export function deletePost (postid) {
    }
 }
 
-export function updateCommentCount (post) {
-  console.log("actions/updateCommentCount", post)
+export function updateCommentCount (post, change) {
+  console.log("actions/updateCommentCount", post, change)
 
   return {
     type: UPDATE_NUM_COMMENTS,
-    post
+    post,
+    change
   }
 }
 
