@@ -29,6 +29,9 @@ class Comment extends Component {
      })
   }
 
+  deleteComment() {
+     console.log("deleteComment")
+  }
 
   state = {
     voteScore: 0
@@ -63,7 +66,7 @@ class Comment extends Component {
                        <button className='btn'>EDIT</button>
                    </Link>
                    <p>
-                    <button className='btn' onClick={() => this.deletePost(comment, comment.id)}>DELETE</button>
+                    <button className='btn' onClick={() => this.deleteComment(comment, comment.id)}>DELETE</button>
                    </p>
                 </div>
             </div>

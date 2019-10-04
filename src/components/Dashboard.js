@@ -19,12 +19,12 @@ class Dashboard extends Component {
       mode: READ
   }
 
-  handleChange(val) {
-
-    this.setState({
-      currentCat: val,
-    })
-  }
+  // handleChange(val) {
+  //
+  //   this.setState({
+  //     currentCat: val,
+  //   })
+  // }
 
   handleSortOrderChange(val) {
      let sortOrder
@@ -45,16 +45,16 @@ class Dashboard extends Component {
 
 
 
-  showNewPostForm() {
-    this.setState({
-       mode: CREATE
-    })
-  }
+  // showNewPostForm() {
+  //   this.setState({
+  //      mode: CREATE
+  //   })
+  // }
 
-  handleDelete() {
-    console.log("hello handleDelete")
-    // deletePost()
-  }
+  // handleDelete() {
+  //   console.log("hello handleDelete")
+  //   // deletePost()
+  // }
 
 
   render() {

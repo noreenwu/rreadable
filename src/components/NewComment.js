@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { getNewId } from '../utils/helpers'
 import { saveComment } from '../utils/PostsAPI'
 import { connect } from 'react-redux'
 import { updateCommentCount } from '../actions/posts'
+import CategoryNav from './CategoryNav'
 
 class NewComment extends Component {
 
@@ -79,41 +80,43 @@ class NewComment extends Component {
     console.log("post was ", this.state.post)
 
     return(
-       <div>NewComment
-        <div>
+       <Fragment>
+         <CategoryNav />
+         <div>NewComment: Responding to <span className="strong">{this.state.post.title}</span>
           <div>
+            <div>
 
-          <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
 
-          <input
-            className='input-half'
-            type='text'
-            name='author'
-            placeholder='your name here'
-            value={this.state.author}
-            onChange={this.handleChange}
-          /><br/>
+            <input
+              className='input-half'
+              type='text'
+              name='author'
+              placeholder='your name here'
+              value={this.state.author}
+              onChange={this.handleChange}
+            /><br/>
 
-          <textarea
-            size={80} name='body'
-            placeholder='your comment here'
-            value={this.state.body} onChange={this.handleChange} /><br/>
+            <textarea
+              size={80} name='body'
+              placeholder='your comment here'
+              value={this.state.body} onChange={this.handleChange} /><br/>
 
-          <button
-            className='btn'
-            type='submit'
-            disabled={ this.state.title === '' || this.state.body === '' || this.state.author === '' }>
-              Submit
-          </button>
-          </form>
+            <button
+              className='btn'
+              type='submit'
+              disabled={ this.state.title === '' || this.state.body === '' || this.state.author === '' }>
+                Submit
+            </button>
+            </form>
+
+            </div>
 
           </div>
 
-        </div>
+         </div>
 
-       </div>
-
-
+       </Fragment>
     )
   }
 }
