@@ -5,7 +5,7 @@ export const ADD_POST = 'ADD_POST'
 export const COUNT_VOTE = 'COUNT_VOTE'
 export const DELETE_POST = 'DELETE_POST'
 export const SAVE_EDITED_POST = 'SAVE_EDITED_POST'
-
+export const UPDATE_NUM_COMMENTS = 'UPDATE_NUM_COMMENTS'
 
 export function receivePosts (posts) {
   return {
@@ -51,6 +51,15 @@ export function deletePost (postid) {
    }
 }
 
+export function updateCommentCount (post) {
+  console.log("actions/updateCommentCount", post)
+
+  return {
+    type: UPDATE_NUM_COMMENTS,
+    post
+  }
+}
+
 export function handleNewPost (post, id) {
   console.log("shared: handleNewPost post was ", post[id])
   // return(dispatch) => {
@@ -60,7 +69,7 @@ export function handleNewPost (post, id) {
   // }
 
 
-  savePost(post[id])  
+  savePost(post[id])
 
   return (dispatch) => {
       dispatch(addPost(post))

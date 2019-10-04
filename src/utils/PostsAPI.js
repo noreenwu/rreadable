@@ -100,15 +100,6 @@ export function saveVote(postid, plusMinus) {
   console.log("PostsAPI: saveVote ", postid)
 
   let vote = getOption(plusMinus)
-  // if (plusMinus === 1) {
-  //   vote = 'upVote'
-  // }
-  // else if (plusMinus === -1) {
-  //   vote = 'downVote'
-  // }
-  // else {
-  //   return
-  // }
 
   return Promise.all([
 

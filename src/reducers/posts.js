@@ -1,4 +1,9 @@
-import { RECEIVE_POSTS, ADD_POST, COUNT_VOTE, DELETE_POST, SAVE_EDITED_POST } from '../actions/posts'
+import { RECEIVE_POSTS,
+         ADD_POST,
+         COUNT_VOTE,
+         DELETE_POST,
+         SAVE_EDITED_POST,
+         UPDATE_NUM_COMMENTS } from '../actions/posts'
 
 export default function posts (state = {}, action) {
 
@@ -47,6 +52,16 @@ export default function posts (state = {}, action) {
         console.log("DELETE_POST newState ", newState)
         return {
           ...newState
+        }
+    }
+    case UPDATE_NUM_COMMENTS: {
+        let newCommentCount = action.post.commentCount + 1
+        return {
+          ...state,
+          [action.post.id] : {
+            ...state[action.post.id],
+            commentCount: newCommentCount
+          }
         }
     }
 

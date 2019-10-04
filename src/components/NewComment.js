@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { getNewId } from '../utils/helpers'
 import { saveComment } from '../utils/PostsAPI'
+import { connect } from 'react-redux'
+import { updateCommentCount } from '../actions/posts'
 
 class NewComment extends Component {
 
@@ -51,15 +53,19 @@ class NewComment extends Component {
         parentId: this.state.post.id
      }
 
-     // navigate back to parent post
+     // save the new comment in the server
      saveComment(newComment)
 
+     // update the parent post's commentCount in redux
+     const { dispatch } = this.props
+     dispatch(updateCommentCount(this.state.post))
+
+     // navigate back to parent post
      this.props.history.push(this.state.gotoLocation)
 
   }
 
   handleChange(e) {
-    console.log("handleChange", e.target.name, e.target.value)
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -145,5 +151,5 @@ class NewComment extends Component {
 //
 // }
 
-export default NewComment
-// export default connect(mapStateToProps)(NewComment)
+//export default NewComment
+export default connect(null, null)(NewComment)
