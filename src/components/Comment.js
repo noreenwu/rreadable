@@ -80,7 +80,8 @@ class Comment extends Component {
 
                    <Link to={{
                         pathname: `/${post.category}/${post.id}/${comment.id}/editcomment`,
-                        state: { post: post
+                        state: { post: post,
+                                 comment: comment,
                           }
                         }}>
 

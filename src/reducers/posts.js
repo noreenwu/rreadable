@@ -56,6 +56,9 @@ export default function posts (state = {}, action) {
     }
     case UPDATE_NUM_COMMENTS: {
         let newCommentCount = action.post.commentCount + action.change
+        if (newCommentCount < 0) {    // shouldn't happen, but...
+          return
+        }
         return {
           ...state,
           [action.post.id] : {

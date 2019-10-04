@@ -34,13 +34,6 @@ class NewComment extends Component {
 
   }
 
-  // state = {
-  //   post: {},
-  //   author: '',
-  //   title: '',
-  //   body: ''
-  //
-  // }
 
   handleSubmit(event) {
      event.preventDefault()
