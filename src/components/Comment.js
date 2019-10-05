@@ -59,7 +59,10 @@ class Comment extends Component {
 
     return (
         <div className="comment-frame">
-            <div className="comment-header">{comment.author} responded at {formatDate(comment.timestamp)}</div>
+            <div className="comment-header">
+              <div className="comment-header-author">{comment.author} responded</div>
+              <div className="comment-header-date">{formatDate(comment.timestamp)}</div>
+            </div>
             <div className="comment-main">
                 <div className="comment-vote">
                   <button className='btn' onClick={() => this.vote(comment, 1)}>UP</button>

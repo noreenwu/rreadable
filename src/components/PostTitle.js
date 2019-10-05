@@ -72,9 +72,9 @@ class PostTitle extends Component {
                   }
                 }}>
 
-               <button className='btn'>EDIT LINK</button>
+               <button className='btn'>Edit Post</button>
            </Link>
-           <button className='btn' onClick={() => this.deletePost(post, post.id)}>DELETE</button>
+           <button className='btn' onClick={() => this.deletePost(post, post.id)}>Delete Post</button>
         </div>
 
       </div>

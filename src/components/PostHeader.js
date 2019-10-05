@@ -11,9 +11,10 @@ function PostHeader ( props ) {
   return (
 
     <div className="post-header">
-
-      <span className="category-name">{post.category} </span>&nbsp; Posted by {post.author} &nbsp;
-         at {formatDate(post.timestamp)}&nbsp;  <span className="comment-count">{post.commentCount} {commentLabel}</span>
+      <div className="category-name">{post.category} </div>
+      <div className="post-header-author">Posted by {post.author}</div>
+      <div className="post-header-timestamp">{formatDate(post.timestamp)}</div>
+      <div className="comment-count">{post.commentCount} {commentLabel}</div>
     </div>
   )
 }

@@ -45,8 +45,10 @@
 .post-header {
   padding: 10px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   border: 1px solid black;
+  justify-content: space-evenly;
 }
 
 .category-list {
@@ -87,8 +89,10 @@
 .post-title {
     font-style: italic;
     font-weight: bold;
-    padding-left: 10px;
-    width: 70%;
+    /* padding-left: 10px; */
+    /* width: 70%; */
+    font-size: 24px;
+    padding-top: 20px;
 }
 
 .post-vote {
@@ -119,11 +123,14 @@
 .comment-main {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .comment-header {
   padding: 10px;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid black;
 }
@@ -135,13 +142,13 @@
 }
 
 .comment-body {
-  width: 70%;
+  /* width: 70%; */
   margin: 30px;
 }
 
 .comment-edit-controls {
-  width: 100%;
-  text-align: right;
+  /* width: 100%;
+  text-align: right; */
 }
 
 input[type=text], textarea {
@@ -175,6 +182,10 @@ textarea {
 .btn-nav {
   text-transform: capitalize;
    border-radius: 15px;
+}
+
+.all-cat {
+  font-style: italic;
 }
 
 .input-half {

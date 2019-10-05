@@ -84,7 +84,7 @@ class Dashboard extends Component {
                 state: { category: category
                   }
                 }}>
-           <button className="btn">NEW Create New Post</button>
+           <button className="btn">Add a Posting</button>
            </Link>
 
 

@@ -78,7 +78,7 @@ class PostDetail extends Component {
                  pathname: `/${post.category}/${post.id}/newcomment`,
                  state: post
                  }}>
-            <button className="btn">NEW COMMENT</button>
+            <button className="btn">Add a Comment</button>
             </Link>
 
           </div>

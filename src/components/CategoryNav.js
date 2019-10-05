@@ -13,7 +13,7 @@ function CategoryNav ( props ) {
        <div className="nav-element">
        <Link to={'/'}>
        <button
-         className={`btn btn-nav`}
+         className={`btn btn-nav all-cat`}
        >all
        </button>
        </Link>
