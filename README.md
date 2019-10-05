@@ -77,3 +77,9 @@ actions/
 reducers/
 
 utils/
+
+
+Notes:
+
+Note that the timestamp updates when posts and comments are edited. This means that comments can have earlier
+timestamps than their parent posts.

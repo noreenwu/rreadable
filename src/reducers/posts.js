@@ -26,12 +26,14 @@ export default function posts (state = {}, action) {
         let postid = action.postid
         let newBody = action.post[postid].body
         let newTitle = action.post[postid].title
+        let newTimestamp = action.post[postid].timestamp
         return {
           ...state,
           [action.postid] : {
             ...state[action.postid],
             body: newBody,
-            title: newTitle
+            title: newTitle,
+            timestamp: newTimestamp
           }
         }
     }

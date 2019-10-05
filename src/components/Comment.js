@@ -60,7 +60,7 @@ class Comment extends Component {
 
   render() {
     const { comment, post, loadComments, p } = this.props
-    //console.log("Comment", comment)
+
 
     return (
         <div className="comment-frame">

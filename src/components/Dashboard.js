@@ -1,30 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import PostListItem from './PostListItem'
-import { Link  } from 'react-router-dom'
-//import { savePost, deletePost } from '../utils/PostsAPI'
-import CreatePost from './CreatePost'
+import { Link } from 'react-router-dom'
 import CategoryNav from './CategoryNav'
 
 const TIMESTAMP = 'timestamp'
 const VOTESCORE = 'votescore'
-const READ = 'read'
-const CREATE = 'create'
 
 
 class Dashboard extends Component {
 
    state = {
       sortOrder: TIMESTAMP,
-      mode: READ
   }
 
-  // handleChange(val) {
-  //
-  //   this.setState({
-  //     currentCat: val,
-  //   })
-  // }
 
   handleSortOrderChange(val) {
      let sortOrder
@@ -37,38 +26,16 @@ class Dashboard extends Component {
      else {
        return // invalid sort order specified
      }
-     console.log("handlesortorderchange ", sortOrder)
-      this.setState({
-        sortOrder: sortOrder,
-      })
+
+    this.setState({
+      sortOrder: sortOrder
+    })
   }
-
-
-
-  // showNewPostForm() {
-  //   this.setState({
-  //      mode: CREATE
-  //   })
-  // }
-
-  // handleDelete() {
-  //   console.log("hello handleDelete")
-  //   // deletePost()
-  // }
 
 
   render() {
 
-    let { posts, category } = this.props
-    let workingPosts = posts
-
-    if (category === 'all') {
-       workingPosts = posts
-    }
-    else {
-       // filter posts
-       workingPosts = posts.filter(p => p.category === category)
-    }
+    let { workingPosts, category } = this.props
 
     let sortedPosts
 
@@ -81,7 +48,7 @@ class Dashboard extends Component {
 
 
     return(
-       <div>Dashboard
+       <Fragment>
 
            <div className="sortOrder">
             <button
@@ -106,13 +73,11 @@ class Dashboard extends Component {
 
            <CategoryNav />
 
-
            { sortedPosts.length === 0
              ? <div> No posts in the {category} category</div>
              : sortedPosts.map((p) =>
               <PostListItem key={p.id} id={p.id}/>
            )}
-
 
            <Link to={{
                 pathname: `/${category}/create`,
@@ -122,21 +87,15 @@ class Dashboard extends Component {
            <button className="btn">NEW Create New Post</button>
            </Link>
 
-           { this.state.mode === CREATE
-             ? <CreatePost />
-             : null
-           }
 
-       </div>
-
-
+       </Fragment>
 
     )
   }
 }
 
-function mapStateToProps( {posts, categories}, ownProps) {
-  // let {category} = ownProps.match.params
+function mapStateToProps( { posts }, ownProps) {
+
   let category = ownProps.location.pathname.split('/').pop()
 
   if ( category === '') {
@@ -144,15 +103,15 @@ function mapStateToProps( {posts, categories}, ownProps) {
   }
   console.log("Dashboard: category", category)
 
-  return{
-    category,
-    defaultPosts: Object.values(posts),
-    posts: Object.values(posts),
-    categories: Object.values(categories)
+  let workingPosts = Object.values(posts)
+
+  if (category !== 'all') {
+     workingPosts = workingPosts.filter(p => p.category === category)
   }
 
+  return{
+    category,
+    workingPosts: workingPosts,
+  }
 }
 export default connect(mapStateToProps)(Dashboard)
-
-
-// { this.props.posts.map(item => <PostListItem key={item.id} post={item} /> )}

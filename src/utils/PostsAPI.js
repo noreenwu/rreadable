@@ -76,6 +76,7 @@ export function savePostEdits(post) {
     headers: { Authorization: "whatever-you-want",
               'Content-Type': 'application/json' },
     body: JSON.stringify({            // or post[post.id]
+        timestamp: post.timestamp,
         title: post.title,
         body: post.body
       })

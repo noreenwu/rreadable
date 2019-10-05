@@ -53,6 +53,7 @@ class EditPost extends Component {
     let postId = this.state.id
 
     const editedPost = { [postId] : { id: postId,
+                                      timestamp: Date.now(),
                                       title: this.state.title,
                                       body: this.state.body,
                                     }

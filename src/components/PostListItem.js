@@ -12,18 +12,13 @@ class PostListItem extends Component {
        console.log("PostListItem got invalid id")
        return null
     }
-    console.log("PostListItem post ", post)
+
     return(
       <div className="post-frame">
-
           <PostHeader id={post.id}/>
-
           <div className="post-info">
-
-                <PostTitle id={post.id}/>
-
+              <PostTitle id={post.id}/>
           </div>
-
       </div>
     )
   }
