@@ -96,22 +96,22 @@ class Dashboard extends Component {
 
 function mapStateToProps( { posts }, ownProps) {
 
-  let category = ownProps.location.pathname.split('/').pop()
+    let category = ownProps.location.pathname.split('/').pop()
 
-  if ( category === '') {
-    category = 'all'
-  }
-  console.log("Dashboard: category", category)
+    if ( category === '') {
+      category = 'all'
+    }
 
-  let workingPosts = Object.values(posts)
+    let workingPosts = Object.values(posts)
 
-  if (category !== 'all') {
-     workingPosts = workingPosts.filter(p => p.category === category)
-  }
+    if (category !== 'all') {
+       workingPosts = workingPosts.filter(p => p.category === category)
+    }
 
-  return{
-    category,
-    workingPosts: workingPosts,
-  }
+    return{
+      category,
+      workingPosts: workingPosts,
+    }
 }
+
 export default connect(mapStateToProps)(Dashboard)

@@ -2,15 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter  } from 'react-router-dom'
 import { countVote, deletePost } from '../actions/posts'
-import { saveVote, sDeletePost } from '../utils/PostsAPI'
+import { saveVote, saveDeletePost } from '../utils/PostsAPI'
 
 class PostTitle extends Component {
 
-
   vote(post, plusMinus) {
     const { dispatch } = this.props
-
-    console.log("vote", post.id, plusMinus)
 
     dispatch(countVote(post, post.id, plusMinus))
     saveVote(post.id, plusMinus)
@@ -29,21 +26,19 @@ class PostTitle extends Component {
     const { dispatch } = this.props
     const { pathname } = this.props.location;
     let lastPathPiece = pathname.split('/').pop()
-    console.log("lastPathPiece ", lastPathPiece)
     if (lastPathPiece === postid) {
        // after deletion, navigate to the category
        gotoPath = `/${post.category}`
     }
 
-    console.log("delete post")
     dispatch(deletePost(postid))
 
-
     // notify the server that the post has been deleted
-    sDeletePost(postid)
+    saveDeletePost(postid)
 
-    // determine through the url (Route) if you need to navigate away or not
-    console.log("go to path: ", gotoPath)
+    // determine through the url (Route) if you need to navigate away or not:
+    // navigate away if user is on the PostDetail page (go to that post's category page)
+    // otherwise, staying where you are is fine (category or all categories views)
     if ( gotoPath ) {
       this.props.history.push(gotoPath);
     }
@@ -53,7 +48,6 @@ class PostTitle extends Component {
 
   render() {
     const { post } = this.props
-
 
     return (
 
@@ -71,7 +65,7 @@ class PostTitle extends Component {
         </div>
 
         <div className="post-edit-controls">
-           
+
            <Link to={{
                 pathname: `/${post.category}/${post.id}/edit`,
                 state: { post: post

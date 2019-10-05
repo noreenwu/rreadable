@@ -21,11 +21,9 @@ class NewComment extends Component {
 
   }
   componentDidMount() {
-    console.log("NewComment componentDidMount ", this.props.location)
     let post = this.props.location.state
     let pathname = this.props.location.pathname
     let newpath = pathname.split('/').slice(0, -1).join('/')
-    console.log("nextpath ", newpath)
 
     this.setState({
       post: post,
@@ -66,11 +64,6 @@ class NewComment extends Component {
   }
 
   render() {
-
-    // const { pathname } = this.props.location;
-    // console.log("NewComment path ", pathname)
-
-    console.log("post was ", this.state.post)
 
     return(
        <Fragment>

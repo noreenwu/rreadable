@@ -12,18 +12,15 @@ class PostDetail extends Component {
 
   state = {
      comments: [],
-     // commentsLoaded: false
   }
 
   componentDidMount() {
     let { id } = this.props
 
     if ( id === -1 ) {
-      console.log("params", this.props.match.params.post_id)
       id = this.props.match.params.post_id
     }
 
-    console.log("id in componentDidMount", id)
     this.loadComments(id, this)
 
   }
@@ -47,16 +44,6 @@ class PostDetail extends Component {
       )
     }
     else {
-      // if (this.state.commentsLoaded === false ) {
-      //   getComments (id)
-      //     .then((comments) => {
-      //       this.setState(() => ({
-      //         comments,
-      //         commentsLoaded: true
-      //       }))
-      //     })
-      // }
-
       return(
         <Fragment>
           <CategoryNav />
@@ -72,7 +59,7 @@ class PostDetail extends Component {
                          comment={c}
                          post={post}
                          loadComments={this.loadComments}
-                         p={this}
+                         whichThis={this}
                       />
             )}
 

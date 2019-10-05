@@ -47,9 +47,6 @@ export function getInitialData () {
 }
 
 export function savePost(post) {
-    console.log("PostAPI: savePost id ", post.id)
-    console.log("PostAPI and the full post is ", post)
-
     return Promise.all([
 
     fetch(`${api}/posts`, {
@@ -98,8 +95,6 @@ function getOption(plusMinus) {
 
 
 export function saveVote(postid, plusMinus) {
-  console.log("PostsAPI: saveVote ", postid)
-
   let vote = getOption(plusMinus)
 
   return Promise.all([
@@ -116,7 +111,7 @@ export function saveVote(postid, plusMinus) {
 
 }
 
-export function sDeletePost(postid) {
+export function saveDeletePost(postid) {
 
   return Promise.all([
 
@@ -130,9 +125,6 @@ export function sDeletePost(postid) {
 }
 
 export function saveComment(comment) {
-    console.log("PostAPI: saveComment id ", comment.id)
-    console.log("PostAPI and the full comment is ", comment)
-
     return Promise.all([
 
     fetch(`${api}/comments`, {
@@ -145,8 +137,6 @@ export function saveComment(comment) {
 }
 
 export function saveCommentVote(commentId, plusMinus) {
-  console.log("PostsAPI: commentVote ", commentId)
-
   let vote = getOption(plusMinus)
 
   return Promise.all([
@@ -164,7 +154,6 @@ export function saveCommentVote(commentId, plusMinus) {
 }
 
 export function saveCommentEdits(comment) {
-  console.log("save comment edits", comment)
   return Promise.all([
 
   fetch(`${api}/comments/${comment.id}`, {
@@ -180,7 +169,6 @@ export function saveCommentEdits(comment) {
 }
 
 export function deleteComment(commentid) {
-
   return Promise.all([
 
   fetch(`${api}/comments/${commentid}`, {

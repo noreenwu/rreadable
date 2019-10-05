@@ -23,7 +23,6 @@ class CreatePost extends Component {
   componentDidMount() {
       let { category } = this.props.location.state
 
-      console.log("CreatePost componentDidMount ", category)
       if (category === 'all') {
         category =''
       }
@@ -34,7 +33,6 @@ class CreatePost extends Component {
   }
 
   handleChange(e) {
-    console.log("handleChange", e.target.name, e.target.value)
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -44,7 +42,6 @@ class CreatePost extends Component {
   handleSubmit(event) {
     event.preventDefault()
     const { dispatch } = this.props
-    console.log("CreatePost: handleSubmit", this.state.category)
     let newId = getNewId()
 
     const newPost = { [newId] : { id: newId,

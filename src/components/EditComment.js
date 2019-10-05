@@ -24,9 +24,7 @@ class EditComment extends Component {
 
       let pathname = this.props.location.pathname
       let newpath = pathname.split('/').slice(0, -2).join('/')
-      console.log("newpath ", newpath)
 
-      console.log("EditComment componentDidMount ", this.props.location, post, comment)
       this.setState({
         post: post,
         id: comment.id,
@@ -58,8 +56,6 @@ class EditComment extends Component {
   }
 
   handleChange(e) {
-
-    console.log("handleChange", e.target.name, e.target.value)
     this.setState({
       [e.target.name]: e.target.value
     })

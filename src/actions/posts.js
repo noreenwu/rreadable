@@ -15,7 +15,6 @@ export function receivePosts (posts) {
 }
 
 export function addPost (post) {
-  console.log("actions/addPost post was ", post)
   return {
     type: ADD_POST,
     post
@@ -23,7 +22,6 @@ export function addPost (post) {
 }
 
 export function saveEditedPost (post, postid) {
-    console.log("actions/saveEditedPost ", post, postid)
     return {
       type: SAVE_EDITED_POST,
       post,
@@ -32,7 +30,6 @@ export function saveEditedPost (post, postid) {
 }
 
 export function countVote (post, postid, vote) {
-    console.log("actions/countVote postid and vote", post, postid, vote)
     return {
       type: COUNT_VOTE,
       post,
@@ -43,8 +40,6 @@ export function countVote (post, postid, vote) {
 }
 
 export function deletePost (postid) {
-   console.log("actions/deletePost postid", postid)
-
    return {
      type: DELETE_POST,
      postid
@@ -52,8 +47,6 @@ export function deletePost (postid) {
 }
 
 export function updateCommentCount (post, change) {
-  console.log("actions/updateCommentCount", post, change)
-
   return {
     type: UPDATE_NUM_COMMENTS,
     post,
@@ -62,14 +55,6 @@ export function updateCommentCount (post, change) {
 }
 
 export function handleNewPost (post, id) {
-  console.log("shared: handleNewPost post was ", post[id])
-  // return(dispatch) => {
-  //    //return savePost(post)
-  //    return(console.log("some API call"))
-  //       .then ((post) => dispatch( addPost(post)))
-  // }
-
-
   savePost(post[id])
 
   return (dispatch) => {

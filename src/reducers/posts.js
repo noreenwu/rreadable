@@ -22,7 +22,6 @@ export default function posts (state = {}, action) {
     }
 
     case SAVE_EDITED_POST: {
-        console.log("SAVE_EDITED_POST reducer ", action.post[action.postid].body, action.postid)
         let postid = action.postid
         let newBody = action.post[postid].body
         let newTitle = action.post[postid].title
@@ -51,7 +50,6 @@ export default function posts (state = {}, action) {
     case DELETE_POST: {
         let newState = Object.assign({}, state)
         delete newState[action.postid]
-        console.log("DELETE_POST newState ", newState)
         return {
           ...newState
         }

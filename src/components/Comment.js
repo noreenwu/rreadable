@@ -48,9 +48,6 @@ class Comment extends Component {
      });
 
      loadComments(post.id, p)   // this lives in the parent, PostDetail
-     // const newPath = `/${post.category}/${post.id}`
-     // this.props.history.push(newPath);
-     // window.location.reload();
 
   }
 
@@ -59,7 +56,7 @@ class Comment extends Component {
   }
 
   render() {
-    const { comment, post, loadComments, p } = this.props
+    const { comment, post, loadComments, whichThis } = this.props
 
 
     return (
@@ -88,7 +85,7 @@ class Comment extends Component {
                        <button className='btn'>EDIT</button>
                    </Link>
                    <p>
-                    <button className='btn' onClick={() => this.deleteComment(comment.id, loadComments, p)}>DELETE</button>
+                    <button className='btn' onClick={() => this.deleteComment(comment.id, loadComments, whichThis)}>DELETE</button>
                    </p>
                 </div>
             </div>
