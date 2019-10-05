@@ -1,13 +1,39 @@
-# Project: Readable
+# Optional Project: Readable
 # Noreen Wu
 # Udacity React: October 2019
 
 # Overview
 
+This is a content and comment web application built using React and Redux as the front-end,
+and interfacing with an api-server backend. Users can post content into the available categories
+and then make comments on their own or others' posts. Both posts and comments can be voted on,
+edited, and deleted.
+
+
 ## Installation
+
+To install this project, first download the api-server from
+https://github.com/udacity/reactnd-project-readable-starter.
+As the server README describes, cd into api-server and run npm install.
+Then run "node server."
+
+In a separate directory, download this front-end UI piece from
+https://github.com/noreenwu/rreadable.
+Then from within the rreadable directory, run npm install and
+then npm start, to launch the app.
 
 
 ## Implementation Notes
+
+This implementation utilizes Redux to maintain state for posts and categories, but not for comments.
+Comments are not global in nature, and so instead, they are retrieved from the server on a per post basis.
+
+react-router-dom is utilized to help with navigation, and so sometimes the local state of
+a component is initialized via a setting in Link, and defined when the user clicks to move from
+one component to another, for example, if editing or creating a post or comment.
+
+Note that the timestamp updates when posts and comments are edited. This means that comments can end up
+having earlier timestamps than their parent posts.
 
 
 ## Required Files
@@ -72,14 +98,36 @@ components/PostTitle.js - renders the title of the specific post that the user h
     listing page, or editing a post navigates to the EditPost page.
 
 
-actions/
+actions/categories.js - the loading of the category data is dispatched as soon as the app is loaded, in the
+    componentDidMount function of App.js. That's about it, since categories are not modified in this app.
+    But having categories in the state allows access to them from any component.
 
-reducers/
+actions/posts.js - the loading of the posts data is dispatched when the app is loaded, in App.js. In addition,
+    all changes made to posts involve dispatching an action defined in this file, whether to add a new post,
+    delete a post, change the voteScore of a post or change the number of comments associated with a post.
 
-utils/
+actions/shared.js - facilitates the combined loading of the categories and posts at application startup
 
+reducers/categories.js - the receiving of the categories loading, specifically the merging of categories
+     pulled from the server with the initially blank category state, is defined here
 
-Notes:
+reducers/posts.js - the slice of state for posts is maintained by these posts reducers. Once the posts are
+     loaded, the other reducers deal with a single post, identified by a post id: to create a post,
+     save edits to a post, change the vote score of a post, delete a post, or change the number of comments
+     associated with a post.
 
-Note that the timestamp updates when posts and comments are edited. This means that comments can have earlier
-timestamps than their parent posts.
+reducers/index.js - this file contains the combineReducers function which allows actions to effect changes
+     via both posts and categories reducers. But we only take advantage of this combination in this app
+     in the loading of categories and initial posts process.
+
+utils/helpers.js - contains helper functions for formatting the date into human recognizable form
+    (instead of Unix time) and for generating a new unique id for either a new post or new comment
+
+utils/PostsAPI.js - contains functions which interface directly with the api server, such as
+    to fetch all posts, fetch all categories, to fetch comments associated with a post, to save a post
+    to the server (via POST), to save changes to a post (via PUT), to delete a post (DELETE), to
+    updating the voting values for a post (PUT), as well as all of the changes that may be made
+    to comments: creating a new comment, editing a comment, voting on a comment, and deleting a comment.
+
+middleware/index.js and middleware/logger.js - these files display to the console the current state any time
+    an action is dispatched
