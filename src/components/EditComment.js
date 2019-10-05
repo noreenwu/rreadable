@@ -45,7 +45,7 @@ class EditComment extends Component {
 
       const newComment = {
         id: this.state.id,
-        timestamp: Date.now(),
+        timestamp: Date.now(),               // update the timestamp
         body: this.state.body
       }
 

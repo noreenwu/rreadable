@@ -12,6 +12,7 @@ class PostDetail extends Component {
 
   state = {
      comments: [],
+     commentsLoaded: false
   }
 
   componentDidMount() {
@@ -26,6 +27,7 @@ class PostDetail extends Component {
   }
 
   loadComments(id, p) {
+    console.log("load comments in Post Detail")
     getComments (id)
       .then((comments) => {
         p.setState(() => ({

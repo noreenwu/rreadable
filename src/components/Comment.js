@@ -33,10 +33,8 @@ class Comment extends Component {
 
 
   deleteComment(commentid, loadComments, p) {
-     console.log("deleteComment", commentid)
 
      deleteComment(commentid)
-
 
      const { dispatch, post } = this.props
 
@@ -48,7 +46,7 @@ class Comment extends Component {
      });
 
      loadComments(post.id, p)   // this lives in the parent, PostDetail
-
+     //window.location.reload()
   }
 
   state = {
