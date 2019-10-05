@@ -179,16 +179,3 @@ export function deleteComment(commentid) {
   ])
 
 }
-      /*  ** outside the workspace, do not include credentials
-
-        componentDidMount() {
-          const api = process.env.REACT_APP_BACKEND ||  'http://localhost:3001';
-          const url = `${api}/categories`;
-          console.log('fetching from url', url);
-          fetch(url, { headers: { 'Authorization': 'whatever-you-want' }} )
-            .then( (res) => { return(res.text()) })
-            .then((data) => {
-              this.setState({backend:data});
-            });
-        }
-        */
