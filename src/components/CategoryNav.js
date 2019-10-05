@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link  } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -7,24 +7,27 @@ function CategoryNav ( props ) {
   const { categories } = props
 
   return (
-    <div className="categoryList">
-
-     <Link to={'/'}>
-     <button
-       className='btn'
-     >all
-     </button>
-     </Link>
-     
-    { categories.map(c =>
-      <div key={c.name}>
-         <Link to={`/${c.path}`}>
-             <button className='btn'>{c.name}</button>
-         </Link>
+    <Fragment>
+      <div className="tiny-label">Select a Category:</div>
+      <div className="category-list">
+       <div className="nav-element">
+       <Link to={'/'}>
+       <button
+         className={`btn btn-nav`}
+       >all
+       </button>
+       </Link>
        </div>
-     )}
+      { categories.map(c =>
+        <div className="nav-element" key={c.name}>
+           <Link to={`/${c.path}`}>
+               <button className={`btn btn-nav`}>{c.name}</button>
+           </Link>
+         </div>
+       )}
 
-    </div>
+      </div>
+    </Fragment>
   )
 
 }

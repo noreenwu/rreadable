@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { saveEditedPost } from '../actions/posts'
 import { savePostEdits } from '../utils/PostsAPI'
-import CategoryNav from './CategoryNav'
+import Header from './Header'
 
 
 class EditPost extends Component {
@@ -12,7 +12,6 @@ class EditPost extends Component {
 
       const { id, title, author, body, category } = post
 
-      console.log("EditPost componentDidMount ", post.title)
       this.setState({
         id: id,
         title: title,
@@ -77,7 +76,7 @@ class EditPost extends Component {
 
     return(
        <Fragment>
-         <CategoryNav />
+         <Header />
 
          <div className="container">
             <h3>Edit Post </h3>

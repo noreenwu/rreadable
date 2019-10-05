@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { handleNewPost } from '../actions/posts'
 import { getNewId } from '../utils/helpers'
-import CategoryNav from './CategoryNav'
+import Header from './Header'
 
 
 class CreatePost extends Component {
@@ -75,7 +75,7 @@ class CreatePost extends Component {
     // console.log("CreatePost categories ", categories)
     return(
        <Fragment>
-         <CategoryNav/>
+         <Header/>
          <h3>New Post</h3>
          <div className="container">
             <form onSubmit={this.handleSubmit}>

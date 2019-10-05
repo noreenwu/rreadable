@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import PostListItem from './PostListItem'
 import { Link } from 'react-router-dom'
-import CategoryNav from './CategoryNav'
+import Header from './Header'
 
 const TIMESTAMP = 'timestamp'
 const VOTESCORE = 'votescore'
@@ -49,7 +49,9 @@ class Dashboard extends Component {
 
     return(
        <Fragment>
+           <Header />
 
+           <div className="tiny-label">Sort by:</div>
            <div className="sortOrder">
             <button
                 className='btn'
@@ -57,7 +59,7 @@ class Dashboard extends Component {
                 type='button'
                 onClick={ (event) => this.handleSortOrderChange(event.target.value)}
 
-                >Timestamp
+                >Date
             </button>
 
             <button
@@ -70,8 +72,6 @@ class Dashboard extends Component {
             </button>
 
            </div>
-
-           <CategoryNav />
 
            { sortedPosts.length === 0
              ? <div> No posts in the {category} category</div>

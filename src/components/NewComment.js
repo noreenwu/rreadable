@@ -3,7 +3,7 @@ import { getNewId } from '../utils/helpers'
 import { saveComment } from '../utils/PostsAPI'
 import { connect } from 'react-redux'
 import { updateCommentCount } from '../actions/posts'
-import CategoryNav from './CategoryNav'
+import Header from './Header'
 
 class NewComment extends Component {
 
@@ -67,7 +67,7 @@ class NewComment extends Component {
 
     return(
        <Fragment>
-         <CategoryNav />
+         <Header />
          <div>NewComment: Responding to <span className="strong">{this.state.post.title}</span>
           <div>
             <div>

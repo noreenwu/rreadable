@@ -5,7 +5,7 @@ import PostHeader from './PostHeader'
 import PostTitle from './PostTitle'
 import PostBody from './PostBody'
 import { getComments } from '../utils/PostsAPI'
-import CategoryNav from './CategoryNav'
+import Header from './Header'
 import Comment from './Comment'
 
 class PostDetail extends Component {
@@ -48,7 +48,7 @@ class PostDetail extends Component {
     else {
       return(
         <Fragment>
-          <CategoryNav />
+          <Header />
           <h3>{post.title}</h3>
           <div className="post-frame">
             <PostHeader id={post.id}/>

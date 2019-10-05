@@ -21,6 +21,13 @@
   color: #09d3ac;
 }
 
+.app-title {
+  margin: 30px;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 60px;
+}
+
 .strong {
   font-weight: bold;
 }
@@ -42,9 +49,23 @@
   border: 1px solid black;
 }
 
+.category-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.nav-element {
+   padding: 3px 20px 20px 20px;
+
+}
+
 .category-name {
   font-weight: bold;
 }
+
 
 
 .post-main {
@@ -138,13 +159,22 @@ textarea {
   height: 150px;
 }
 
+.tiny-label {
+  font-size: 10px;
+}
+
 .btn {
   margin: 5px;
-  padding: 5px;
+  padding: 15px;
   font-size: 1.3em;
   cursor: pointer;
   border: 1px solid #5da6e6;
   background-color: aliceblue;
+}
+
+.btn-nav {
+  text-transform: capitalize;
+   border-radius: 15px;
 }
 
 .input-half {

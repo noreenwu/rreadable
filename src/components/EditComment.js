@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CategoryNav from './CategoryNav'
+import Header from './Header'
 import { saveCommentEdits } from '../utils/PostsAPI'
 
 class EditComment extends Component {
@@ -41,7 +41,6 @@ class EditComment extends Component {
 
   handleSubmit(e) {
       e.preventDefault()
-      console.log("handleSubmit")
 
       const newComment = {
         id: this.state.id,
@@ -65,7 +64,7 @@ class EditComment extends Component {
 
      return (
         <div>
-          <CategoryNav/>
+          <Header/>
           <div>Respond to...<span className="strong">{this.state.post.title}</span></div>
 
           <form onSubmit={this.handleSubmit}>
