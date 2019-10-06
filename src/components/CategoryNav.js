@@ -8,7 +8,7 @@ function CategoryNav ( props ) {
 
   return (
     <Fragment>
-      <div className="tiny-label">Select a Category:</div>
+      <div className="tiny-label">View Posts by Category:</div>
       <div className="category-list">
        <div className="nav-element">
        <Link to={'/'}>

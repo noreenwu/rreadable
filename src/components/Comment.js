@@ -60,7 +60,7 @@ class Comment extends Component {
     return (
         <div className="comment-frame">
             <div className="comment-header">
-              <div className="comment-header-author">{comment.author} responded</div>
+              <div className="comment-header-author">{comment.author} commented</div>
               <div className="comment-header-date">{formatDate(comment.timestamp)}</div>
             </div>
             <div className="comment-main">
@@ -98,5 +98,3 @@ class Comment extends Component {
 
 
 export default withRouter(connect(null, null)(Comment))
-
-// export default Comment

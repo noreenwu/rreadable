@@ -49,7 +49,6 @@ class PostDetail extends Component {
       return(
         <Fragment>
           <Header />
-          <h3>{post.title}</h3>
           <div className="post-frame">
             <PostHeader id={post.id}/>
             <PostTitle id={post.id}/>
@@ -66,22 +65,25 @@ class PostDetail extends Component {
             )}
 
 
-            <Link to={`/${post.category}`}>
-               <div>Go to category listing</div>
-            </Link>
 
-            <Link to={'/'}>
-               <div>Go to full listing</div>
-            </Link>
 
             <Link to={{
                  pathname: `/${post.category}/${post.id}/newcomment`,
                  state: post
                  }}>
-            <button className="btn">Add a Comment</button>
+            <button className="btn">New Comment</button>
             </Link>
 
           </div>
+
+          <Link to={`/${post.category}`}>
+             <div>Go back to <span className="category">{post.category}</span> category listing</div>
+          </Link>
+
+          <Link to={'/'}>
+             <div>Go back to full listing</div>
+          </Link>
+
         </Fragment>
       )
     }

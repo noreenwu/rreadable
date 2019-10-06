@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import CategoryNav from './CategoryNav'
 
 function Header ( props ) {
-  const { post } = props
+
 
   return (
      <Fragment>

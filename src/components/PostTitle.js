@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Link, withRouter  } from 'react-router-dom'
 import { countVote, deletePost } from '../actions/posts'
 import { saveVote, saveDeletePost } from '../utils/PostsAPI'
+import UpArrow from '../up-arrow-blue.png'
+import DownArrow from '../down-arrow-blue.png'
 
 class PostTitle extends Component {
 
@@ -53,9 +55,15 @@ class PostTitle extends Component {
 
       <div className="post-main">
         <div className="post-vote">
-          <button className='btn' onClick={() => this.vote(post, 1)}>UP</button>
-          <p>{post.voteScore}</p>
-          <button className='btn' onClick={() => this.vote(post, -1)}>DOWN</button>
+          <img src={UpArrow}
+               alt="UP"
+               onClick={() => this.vote(post, 1)}
+               />
+          <p className="strong">{post.voteScore}</p>
+          <img src={DownArrow}
+               alt="DOWN"
+               onClick={() => this.vote(post, -1)}
+               />
 
         </div>
         <div className="post-title">
@@ -72,9 +80,9 @@ class PostTitle extends Component {
                   }
                 }}>
 
-               <button className='btn'>Edit Post</button>
+               <button className={`btn btn-function`}>Edit</button>
            </Link>
-           <button className='btn' onClick={() => this.deletePost(post, post.id)}>Delete Post</button>
+           <button className={`btn btn-function`} onClick={() => this.deletePost(post, post.id)}>Delete</button>
         </div>
 
       </div>

@@ -35,9 +35,10 @@
 .post-frame {
   width: 100%;
   max-width: 900px;
-  padding: 10px;
-  margin: 20px auto;
-  border: 1px solid #dad7d7;
+  padding: 30px;
+  margin: 30px auto;
+  /* border: 8px solid #dad7d7; */
+  border: 8px solid #99cc99;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -47,7 +48,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 1px solid black;
+  border: 3px solid lightgrey;
   justify-content: space-evenly;
 }
 
@@ -59,6 +60,10 @@
   margin-right: 30%;
 }
 
+.category {
+  font-weight: bold;
+  text-transform: capitalize;
+}
 .nav-element {
    padding: 3px 20px 20px 20px;
 
@@ -75,7 +80,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: 95%;
   height: 150px;
 }
 
@@ -106,7 +111,7 @@
 .post-body {
     margin: 30px;
     padding: 30px;
-    border: 1px solid black;
+    border: 5px solid lightgrey;
 }
 
 .comment-frame {
@@ -167,7 +172,7 @@ textarea {
 }
 
 .tiny-label {
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .btn {
@@ -182,6 +187,12 @@ textarea {
 .btn-nav {
   text-transform: capitalize;
    border-radius: 15px;
+}
+
+.btn-function{
+   border-radius: 15px;
+   background-color: #5da6e6;
+   margin-right: 30px;
 }
 
 .all-cat {
