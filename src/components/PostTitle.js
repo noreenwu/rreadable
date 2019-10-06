@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { Link, withRouter  } from 'react-router-dom'
 import { countVote, deletePost } from '../actions/posts'
 import { saveVote, saveDeletePost } from '../utils/PostsAPI'
-import UpArrow from '../up-arrow-blue.png'
-import DownArrow from '../down-arrow-blue.png'
+import UpArrow from '../images/up-arrow-blue.png'
+import DownArrow from '../images/down-arrow-blue.png'
 
 class PostTitle extends Component {
 
