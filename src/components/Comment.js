@@ -71,6 +71,7 @@ class Comment extends Component {
                        alt="UP"
                        onClick={() => this.vote(comment, 1)}
                        />
+                  <p>score</p>     
                   <p>{this.state.voteScore}</p>
                   <img src={DownArrow}
                        alt="DOWN"

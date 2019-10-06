@@ -59,6 +59,7 @@ class PostTitle extends Component {
                alt="UP"
                onClick={() => this.vote(post, 1)}
                />
+          <p>score</p>     
           <p className="strong">{post.voteScore}</p>
           <img src={DownArrow}
                alt="DOWN"

@@ -37,7 +37,9 @@
   max-width: 900px;
   padding: 30px;
   margin: 30px auto;
-  border: 8px solid #99cc99;
+  /* border: 8px solid #5da6e6; */
+  /* border: 5px solid #4BD9D9; */
+  border: 5px solid #456B8C;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -48,7 +50,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 3px solid lightgrey;
+  border: 2px solid #96ceff;
   justify-content: space-evenly;
 }
 
@@ -80,8 +82,6 @@
 .category-name {
   font-weight: bold;
 }
-
-
 
 .post-main {
   margin: 10px;
@@ -117,9 +117,9 @@
     width: 10%;
 }
 .post-body {
-    margin: 30px;
+    margin: 30px 0;
     padding: 30px;
-    border: 5px solid lightgrey;
+    border: 1px dotted #5da6e6;
 }
 
 .comment-frame {
@@ -128,7 +128,8 @@
   max-width: 800px;
   padding: 10px;
   margin: 20px auto;
-  border: 1px solid #dad7d7;
+  /* border: 2px solid #99cc99; */
+    border: 2px solid #266623;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -137,6 +138,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 10px;
 }
 
 .comment-header {
@@ -146,7 +148,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 3px solid lightgrey;
+  border: 3px solid #99cc99;
 }
 
 .comment-vote {
@@ -200,14 +202,16 @@ textarea {
 
 .btn-function{
    border-radius: 15px;
-   background-color: #5da6e6;
+   border: 3px solid  #5da6e6;
    margin-right: 30px;
    width: 100px;
 }
 
 .btn-function-comment {
   border-radius: 15px;
-  background-color: #99cc99;
+  background-color: #e4f9e4;
+  border: 3px solid #99cc99;
+
   margin-right: 30px;
   width: 100px;
 }
