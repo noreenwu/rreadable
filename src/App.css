@@ -37,13 +37,13 @@
   max-width: 900px;
   padding: 30px;
   margin: 30px auto;
-  /* border: 8px solid #dad7d7; */
   border: 8px solid #99cc99;
   border-radius: 3px;
   cursor: pointer;
 }
 
 .post-header {
+  margin-bottom: 30px;
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -58,6 +58,14 @@
   justify-content: space-evenly;
   margin-left: 30%;
   margin-right: 30%;
+}
+
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.author {
+  font-weight: bold;
 }
 
 .category {
@@ -116,7 +124,7 @@
 
 .comment-frame {
   width: 100%;
-  height: 200px;
+  height: 240px;
   max-width: 800px;
   padding: 10px;
   margin: 20px auto;
@@ -132,12 +140,13 @@
 }
 
 .comment-header {
+  margin: 15px 15px 20px 15px;
   padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
+  border: 3px solid lightgrey;
 }
 
 .comment-vote {
@@ -152,8 +161,8 @@
 }
 
 .comment-edit-controls {
-  /* width: 100%;
-  text-align: right; */
+   width: 15%;
+  /* text-align: right; */
 }
 
 input[type=text], textarea {
@@ -193,6 +202,14 @@ textarea {
    border-radius: 15px;
    background-color: #5da6e6;
    margin-right: 30px;
+   width: 100px;
+}
+
+.btn-function-comment {
+  border-radius: 15px;
+  background-color: #99cc99;
+  margin-right: 30px;
+  width: 100px;
 }
 
 .all-cat {

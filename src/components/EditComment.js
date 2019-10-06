@@ -61,11 +61,12 @@ class EditComment extends Component {
   }
   render() {
 
-
      return (
         <div>
           <Header/>
-          <div>Respond to...<span className="strong">{this.state.post.title}</span></div>
+          <h3>Edit Comment</h3>
+          <div className="post-frame">
+          <div className="message">You are responding to: <span className="strong">{this.state.post.title}</span></div>
 
           <form onSubmit={this.handleSubmit}>
             <textarea
@@ -81,6 +82,7 @@ class EditComment extends Component {
                 Submit
             </button>
           </form>
+          </div>
         </div>
      )
   }

@@ -68,40 +68,39 @@ class NewComment extends Component {
     return(
        <Fragment>
          <Header />
-         <div>NewComment: Responding to <span className="strong">{this.state.post.title}</span>
-          <div>
-            <div>
+         <h3>New Comment</h3>
+         <div className="post-frame">
+           <div>
+                  <div className="message">You are responding to: <span className="strong">{this.state.post.title}</span></div>
 
-            <form onSubmit={this.handleSubmit}>
 
-            <input
-              className='input-half'
-              type='text'
-              name='author'
-              placeholder='your name here'
-              value={this.state.author}
-              onChange={this.handleChange}
-            /><br/>
+                      <form onSubmit={this.handleSubmit}>
 
-            <textarea
-              size={80} name='body'
-              placeholder='your comment here'
-              value={this.state.body} onChange={this.handleChange} /><br/>
+                      <input
+                        className='input-half'
+                        type='text'
+                        name='author'
+                        placeholder='your name here'
+                        value={this.state.author}
+                        onChange={this.handleChange}
+                      /><br/>
 
-            <button
-              className='btn'
-              type='submit'
-              disabled={ this.state.title === '' || this.state.body === '' || this.state.author === '' }>
-                Submit
-            </button>
-            </form>
+                      <textarea
+                        size={80} name='body'
+                        placeholder='your comment here'
+                        value={this.state.body} onChange={this.handleChange} /><br/>
 
-            </div>
+                      <button
+                        className='btn'
+                        type='submit'
+                        disabled={ this.state.title === '' || this.state.body === '' || this.state.author === '' }>
+                          Submit
+                      </button>
+                      </form>
 
-          </div>
 
-         </div>
-
+           </div>
+           </div>
        </Fragment>
     )
   }

@@ -75,51 +75,53 @@ class CreatePost extends Component {
     // console.log("CreatePost categories ", categories)
     return(
        <Fragment>
-         <Header/>
-         <h3>New Post</h3>
-         <div className="container">
-            <form onSubmit={this.handleSubmit}>
-              <input
-                className='input-half'
-                type='text'
-                name='author'
-                placeholder='enter your name here'
-                value={this.state.author}
-                onChange={this.handleChange}
-              /><br/>
+           <Header/>
+           <h3>New Post</h3>
+           <div className="post-frame">
+           <div className="container">
+              <form onSubmit={this.handleSubmit}>
+                <input
+                  className='input-half'
+                  type='text'
+                  name='author'
+                  placeholder='enter your name here'
+                  value={this.state.author}
+                  onChange={this.handleChange}
+                /><br/>
 
-              <select value={this.state.category}
-                      name='category'
-                      onChange={(event) => this.handleChange(event)}>
-                         <option key={'default'} value=''>Select category</option>
-                      { categories.map( v =>
-                          <option key={v.name} value={v.name}>{v.name}</option>
-                      )}
+                <select value={this.state.category}
+                        name='category'
+                        onChange={(event) => this.handleChange(event)}>
+                           <option key={'default'} value=''>Select category</option>
+                        { categories.map( v =>
+                            <option key={v.name} value={v.name}>{v.name}</option>
+                        )}
 
-              </select><br/>
+                </select><br/>
 
-              <input
-                type='text'
-                name='title'
-                placeholder='enter title for your post here'
-                size={80}
-                value={this.state.title}
-                onChange={this.handleChange}
-              />
+                <input
+                  type='text'
+                  name='title'
+                  placeholder='enter title for your post here'
+                  size={80}
+                  value={this.state.title}
+                  onChange={this.handleChange}
+                />
 
-              <textarea
-                size={80} name='body'
-                placeholder='the body of your post here'
-                value={this.state.body} onChange={this.handleChange} /><br/>
+                <textarea
+                  size={80} name='body'
+                  placeholder='the body of your post here'
+                  value={this.state.body} onChange={this.handleChange} /><br/>
 
-              <button
-                className='btn'
-                type='submit'
-                disabled={this.state.title === '' || this.state.body === '' || this.state.author === '' || this.state.category === '' }>
-                  Submit
-              </button>
+                <button
+                  className='btn'
+                  type='submit'
+                  disabled={this.state.title === '' || this.state.body === '' || this.state.author === '' || this.state.category === '' }>
+                    Submit
+                </button>
 
-            </form>
+              </form>
+           </div>
          </div>
        </Fragment>
     )

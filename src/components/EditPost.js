@@ -3,21 +3,22 @@ import { connect } from 'react-redux'
 import { saveEditedPost } from '../actions/posts'
 import { savePostEdits } from '../utils/PostsAPI'
 import Header from './Header'
-
+import { formatDate } from '../utils/helpers'
 
 class EditPost extends Component {
 
   componentDidMount() {
       const { post } = this.props.location.state
 
-      const { id, title, author, body, category } = post
+      const { id, title, author, body, category, timestamp } = post
 
       this.setState({
         id: id,
         title: title,
         author: author,
         body: body,
-        category: category
+        category: category,
+        timestamp: timestamp
       })
   }
 
@@ -70,22 +71,20 @@ class EditPost extends Component {
   }
 
   render() {
-    // const { categories } = this.props
-    console.log("EditPost ", this.state)
-
 
     return(
        <Fragment>
          <Header />
-
-         <div className="container">
-            <h3>Edit Post </h3>
+         <h3>Edit Post </h3>
+         <div className="post-frame">
+            <div className="post-header">
+                <div>Category <span className="category">{this.state.category}</span></div>
+                <div>Posted by <span className="author">{this.state.author}</span></div>
+                <div>{formatDate(this.state.timestamp)}</div>
+            </div>
             <form onSubmit={this.handleSubmit}>
-              author: {this.state.author}
-              <br/>
 
-              category: {this.state.category}
-              <br/>
+
 
               <input
                 type='text'

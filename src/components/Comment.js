@@ -4,6 +4,8 @@ import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { saveCommentVote, deleteComment } from '../utils/PostsAPI'
 import { updateCommentCount } from '../actions/posts'
+import UpArrow from '../images/up-arrow-green.png'
+import DownArrow from '../images/down-arrow-green.png'
 
 
 class Comment extends Component {
@@ -60,15 +62,20 @@ class Comment extends Component {
     return (
         <div className="comment-frame">
             <div className="comment-header">
-              <div className="comment-header-author">{comment.author} commented</div>
+              <div className="comment-header-author"><span className="author">{comment.author}</span> commented</div>
               <div className="comment-header-date">{formatDate(comment.timestamp)}</div>
             </div>
             <div className="comment-main">
                 <div className="comment-vote">
-                  <button className='btn' onClick={() => this.vote(comment, 1)}>UP</button>
+                  <img src={UpArrow}
+                       alt="UP"
+                       onClick={() => this.vote(comment, 1)}
+                       />
                   <p>{this.state.voteScore}</p>
-                  <button className='btn' onClick={() => this.vote(comment, -1)}>DOWN</button>
-
+                  <img src={DownArrow}
+                       alt="DOWN"
+                       onClick={() => this.vote(comment, -1)}
+                      />
                 </div>
                 <div className="comment-body">
                   {comment.body}
@@ -83,10 +90,10 @@ class Comment extends Component {
                           }
                         }}>
 
-                       <button className='btn'>EDIT</button>
+                       <button className={`btn btn-function-comment`}>Edit</button>
                    </Link>
                    <p>
-                    <button className='btn' onClick={() => this.deleteComment(comment.id, loadComments, whichThis)}>DELETE</button>
+                    <button className={`btn btn-function-comment`} onClick={() => this.deleteComment(comment.id, loadComments, whichThis)}>Delete</button>
                    </p>
                 </div>
             </div>
