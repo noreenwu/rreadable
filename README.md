@@ -1,6 +1,6 @@
-# Optional Project: Readable
 # Noreen Wu
 # Udacity React: October 2019
+# Project: Readable
 
 # Overview
 
